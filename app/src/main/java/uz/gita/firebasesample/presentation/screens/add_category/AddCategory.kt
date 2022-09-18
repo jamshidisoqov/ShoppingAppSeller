@@ -10,11 +10,14 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 import uz.gita.firebasesample.R
 import uz.gita.firebasesample.databinding.DialogChoiceBinding
 import uz.gita.firebasesample.databinding.ScreenAddCategoryBinding
 
 // Created by Jamshid Isoqov an 9/18/2022
+
+@AndroidEntryPoint
 class AddCategory : Fragment(R.layout.screen_add_category) {
     private val viewBinding: ScreenAddCategoryBinding by viewBinding(ScreenAddCategoryBinding::bind)
 
