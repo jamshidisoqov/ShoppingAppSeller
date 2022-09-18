@@ -3,14 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/drawable-v24/bg_list_orders.xml" value="0.1595" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/drawable/bg_btn_screen.xml" value="0.1595" />
-        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/drawable/bg_list_orders.xml" value="0.1595" />
-        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1595" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/activity_main.xml" value="0.2484375" />
-        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/dialog_choice.xml" value="0.2484375" />
-        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/item_category.xml" value="0.2484375" />
-        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/list_item_orders.xml" value="0.2484375" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/page_categories.xml" value="0.2484375" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/page_orders.xml" value="0.2484375" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/screen_add_category.xml" value="0.2484375" />
@@ -19,9 +13,12 @@
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/screen_main.xml" value="0.2484375" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/screen_product_details.xml" value="0.2484375" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/screen_products.xml" value="0.24739583333333334" />
+        <entry key="..\:/Users/Ulug'bek/AndroidStudioProjects/ShoppingAppSeller2/app/src/main/res/drawable/product_to_cart_bg.xml" value="0.1865" />
         <entry key="..\:/Users/Ulug'bek/AndroidStudioProjects/ShoppingAppSeller2/app/src/main/res/layout/item_category.xml" value="0.22" />
+        <entry key="..\:/Users/Ulug'bek/AndroidStudioProjects/ShoppingAppSeller2/app/src/main/res/layout/item_product.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Ulug'bek/AndroidStudioProjects/ShoppingAppSeller2/app/src/main/res/layout/list_item_orders.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Ulug'bek/AndroidStudioProjects/ShoppingAppSeller2/app/src/main/res/layout/page_categories.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Ulug'bek/AndroidStudioProjects/ShoppingAppSeller2/app/src/main/res/layout/screen_add_product.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Ulug'bek/AndroidStudioProjects/ShoppingAppSeller2/app/src/main/res/layout/screen_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Ulug'bek/AndroidStudioProjects/ShoppingAppSeller2/app/src/main/res/layout/screen_product_details.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Ulug'bek/AndroidStudioProjects/ShoppingAppSeller2/app/src/main/res/layout/screen_products.xml" value="0.20416666666666666" />
