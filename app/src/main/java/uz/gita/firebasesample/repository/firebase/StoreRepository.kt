@@ -25,4 +25,5 @@ interface StoreRepository {
 
     suspend fun uploadImage(uri: Uri):String
 
+
 }

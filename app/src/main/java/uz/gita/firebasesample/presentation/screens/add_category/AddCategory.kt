@@ -34,10 +34,12 @@ class AddCategory : Fragment(R.layout.screen_add_category) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == 123) {
+            viewModel.uploadImage(data?.data!!)
             val bmp = data?.extras?.get("data") as Bitmap
             viewBinding.tvImageCategory.setImageBitmap(bmp)
         } else if (requestCode == 456) {
             viewBinding.tvImageCategory.setImageURI(data?.data)
+            viewModel.uploadImage(data?.data!!)
         }
     }
 
