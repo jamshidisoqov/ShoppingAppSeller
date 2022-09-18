@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import uz.gita.firebasesample.data.models.local.ProductCategoryData
 import uz.gita.firebasesample.data.pref.MySharedPref
 import uz.gita.firebasesample.navigation.Navigator
-import uz.gita.firebasesample.presentation.screens.main.pages.CategoryPageDirections
+import uz.gita.firebasesample.presentation.screens.main.MainScreenDirections
 import uz.gita.firebasesample.presentation.viewmodel.CategoriesViewModel
 import uz.gita.firebasesample.repository.local.Repository
 import javax.inject.Inject
@@ -25,10 +25,16 @@ class CategoriesViewModelImpl @Inject constructor(
     override val categoryListLiveData = MutableLiveData<List<ProductCategoryData>>()
 
     override fun openAddCategory() {
-
+        viewModelScope.launch {
+            navigator.navigateTo(MainScreenDirections.actionMainScreenToAddCategory())
+        }
     }
 
     override fun openProductScreen(productCategoryData: ProductCategoryData) {
+        viewModelScope.launch {
+            navigator.navigateTo(MainScreenDirections.actionMainScreenToProductsScreen(productCategoryData))
+        }
+
     }
 
     init {

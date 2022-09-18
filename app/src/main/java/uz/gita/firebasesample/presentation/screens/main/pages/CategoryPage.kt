@@ -22,9 +22,18 @@ class CategoryPage : Fragment(R.layout.page_categories) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewBinding.categoryList.adapter = adapter
 
+        viewModel.categoryListLiveData.observe(viewLifecycleOwner){
+            adapter.submit(it)
+        }
+
         adapter.setOnClickItemListener {
             viewModel.openProductScreen(it)
         }
+
+        viewBinding.addBtn.setOnClickListener {
+            viewModel.openAddCategory()
+        }
+
     }
 
 }
