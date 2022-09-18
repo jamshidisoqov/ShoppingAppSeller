@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import uz.gita.firebasesample.data.models.firebase.CategoryEntity
 import uz.gita.firebasesample.data.models.firebase.OrderEntity
 import uz.gita.firebasesample.data.models.firebase.ProductEntity
+import uz.gita.firebasesample.data.models.local.OrdersData
 
 
 interface StoreRepository {
