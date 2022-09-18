@@ -47,16 +47,13 @@ class StoreRepositoryImpl @Inject constructor(
     }
 
     override fun getProductsByCategory(categoryId: String): Flow<List<ProductEntity>> = flow {
-        val list = ArrayList<ProductEntity>()
-        db.collection("product").get()
-            .addOnSuccessListener {
-                val ls = it.map { item ->
-                    item.toProduct()
-                }.filter { product ->
-                    product.categoryId == categoryId && product.storeId == mySharedPref.getStoreId()
-                }
-                list.addAll(ls)
+        val list = db.collection("product").get().await().documents
+            .map { item ->
+                item.toProduct()
+            }.filter { product ->
+                product.categoryId == categoryId && product.storeId == mySharedPref.getStoreId()
             }
+
         emit(list)
     }
 
@@ -74,14 +71,14 @@ class StoreRepositoryImpl @Inject constructor(
 
 
     override fun getAllOrders(): Flow<List<OrderEntity>> = flow {
-        val list = ArrayList<OrderEntity>()
-        db.collection("orders").get()
-            .addOnSuccessListener {
-                val ls = it.map { item ->
-                    item.toOrder()
-                }
-                list.addAll(ls)
+        val list = db.collection("orders")
+            .get()
+            .await()
+            .documents
+            .map { item ->
+                item.toOrder()
             }
+
         emit(list)
     }
 
