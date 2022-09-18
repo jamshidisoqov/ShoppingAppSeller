@@ -20,20 +20,19 @@ import uz.gita.firebasesample.presentation.viewmodel.impl.CategoriesViewModelImp
 @AndroidEntryPoint
 class CategoryPage : Fragment(R.layout.page_categories) {
 
-    private val viewBinding:PageCategoriesBinding by viewBinding(PageCategoriesBinding::bind)
-    private val viewModel:CategoriesViewModel by viewModels<CategoriesViewModelImpl>()
+    private val viewBinding: PageCategoriesBinding by viewBinding(PageCategoriesBinding::bind)
+    private val viewModel: CategoriesViewModel by viewModels<CategoriesViewModelImpl>()
 
-    private val adapter:CategoryAdapter by lazy { CategoryAdapter() }
+    private val adapter: CategoryAdapter by lazy { CategoryAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewBinding.categoryList.adapter = adapter
 
-        viewModel.categoryListLiveData.observe(viewLifecycleOwner){
+        viewModel.categoryListLiveData.observe(viewLifecycleOwner) {
             adapter.submit(it)
         }
 
         adapter.setOnClickItemListener {
-
             viewModel.openProductScreen(it)
         }
 
@@ -41,16 +40,14 @@ class CategoryPage : Fragment(R.layout.page_categories) {
             viewModel.openAddCategory()
         }
 
-
-        viewBinding.search.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
+        viewBinding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                lifecycleScope.launch{
+                lifecycleScope.launch {
                     delay(300)
-
                 }
                 return true
             }

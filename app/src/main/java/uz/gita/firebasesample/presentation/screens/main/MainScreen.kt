@@ -24,9 +24,8 @@ class MainScreen : Fragment(R.layout.screen_main) {
         TabLayoutMediator(viewBinding.tabLayout, viewBinding.viewPager) { tab, position ->
             tab.text = "${list[position]}"
         }.attach()
-        TabLayoutMediator(viewBinding.tabLayout,viewBinding.viewPager){tab,position ->
-            tab.text ="${list[position]}"
-        }.attach()
+
+
     }
 
 }

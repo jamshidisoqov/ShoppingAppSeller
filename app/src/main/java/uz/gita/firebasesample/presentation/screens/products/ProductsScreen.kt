@@ -35,7 +35,9 @@ class ProductsScreen : Fragment(R.layout.screen_products) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewBinding.productList.adapter = adapter
+
+
+
         viewModel.productListLiveData.observe(viewLifecycleOwner) {
             if (it.isEmpty()) {
                 viewBinding.emptyPlaceholder.visibility = View.VISIBLE
@@ -44,6 +46,7 @@ class ProductsScreen : Fragment(R.layout.screen_products) {
             }
             adapter.submitList(it)
         }
+        viewBinding.productList.adapter = adapter
 
         adapter.setItemOnClickListener {
             viewModel.openProductDetailsScreen(it)
