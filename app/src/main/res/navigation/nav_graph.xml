@@ -30,6 +30,9 @@
         <argument
             android:name="category"
             app:argType="uz.gita.firebasesample.data.models.local.ProductCategoryData" />
+        <action
+            android:id="@+id/action_productsScreen_to_productDetailsScreen"
+            app:destination="@id/productDetailsScreen" />
     </fragment>
     <fragment
         tools:layout="@layout/screen_add_category"
@@ -47,5 +50,14 @@
         <action
             android:id="@+id/action_mainScreen_to_addCategory"
             app:destination="@id/addCategory" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailsScreen"
+        tools:layout="@layout/screen_product_details"
+        android:name="uz.gita.firebasesample.presentation.screens.products.details.ProductDetailsScreen"
+        android:label="ProductDetailsScreen" >
+        <argument
+            android:name="product"
+            app:argType="uz.gita.firebasesample.data.models.local.ProductData" />
     </fragment>
 </navigation>
