@@ -19,43 +19,27 @@
         android:id="@+id/back_from_product"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginStart="6dp"
         android:backgroundTint="#00000000"
         android:padding="10dp"
-        android:layout_marginStart="6dp"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintBottom_toBottomOf="@+id/action_bar"
         app:layout_constraintEnd_toStartOf="@+id/product_search"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/action_bar"
-       />
+        app:layout_constraintTop_toTopOf="@+id/action_bar" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/product_search"
         android:layout_width="0dp"
         android:layout_height="45dp"
-        android:background="#fff"
         android:layout_marginHorizontal="10dp"
+        android:background="#fff"
         app:layout_constraintBottom_toBottomOf="@+id/action_bar"
-        app:layout_constraintEnd_toStartOf="@+id/product_filter"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/back_from_product"
         app:layout_constraintTop_toTopOf="@+id/action_bar"
         app:layout_constraintVertical_bias="0.375" />
 
-    <TextView
-        android:id="@+id/product_filter"
-        android:elevation="10dp"
-        android:layout_width="70dp"
-        android:layout_height="35dp"
-        android:layout_marginHorizontal="10dp"
-        android:gravity="center"
-        android:text="To Cart"
-        android:textSize="14sp"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/action_bar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/product_search"
-        app:layout_constraintTop_toTopOf="@+id/action_bar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/product_list"
@@ -70,44 +54,42 @@
         tools:listitem="@layout/item_product" />
 
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_product"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:src="@drawable/ic_baseline_add_24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 
     <LinearLayout
-    android:id="@+id/emptyPlaceholder"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:visibility="gone"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
-
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/ic_baseline_search_24"
-        app:tint="#AAAAAA" />
-
-    <TextView
+        android:id="@+id/emptyPlaceholder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="No Such Word Found"
-        android:textColor="#AAAAAA"
-        android:textSize="18sp" />
-</LinearLayout>
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_baseline_search_24"
+            app:tint="#AAAAAA" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="No Such Word Found"
+            android:textColor="#AAAAAA"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

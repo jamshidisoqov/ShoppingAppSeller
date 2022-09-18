@@ -25,6 +25,11 @@ class CategoryPage : Fragment(R.layout.page_categories) {
 
     private val adapter: CategoryAdapter by lazy { CategoryAdapter() }
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.update()
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewBinding.categoryList.adapter = adapter
 
@@ -39,21 +44,6 @@ class CategoryPage : Fragment(R.layout.page_categories) {
         viewBinding.addBtn.setOnClickListener {
             viewModel.openAddCategory()
         }
-
-        viewBinding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                lifecycleScope.launch {
-                    delay(300)
-                }
-                return true
-            }
-
-        })
-
     }
 
 }

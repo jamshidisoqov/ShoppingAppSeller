@@ -20,7 +20,7 @@ class CategoriesViewModelImpl @Inject constructor(
     private val repository: Repository,
     private val sharedPref: MySharedPref,
     private val navigator: Navigator
-) : CategoriesViewModel, ViewModel(){
+) : CategoriesViewModel, ViewModel() {
 
     override val categoryListLiveData = MutableLiveData<List<ProductCategoryData>>()
 
@@ -32,15 +32,17 @@ class CategoriesViewModelImpl @Inject constructor(
 
     override fun openProductScreen(productCategoryData: ProductCategoryData) {
         viewModelScope.launch {
-            navigator.navigateTo(MainScreenDirections.actionMainScreenToProductsScreen(productCategoryData))
+            navigator.navigateTo(
+                MainScreenDirections.actionMainScreenToProductsScreen(
+                    productCategoryData
+                )
+            )
         }
     }
 
-
-
-    init {
-        viewModelScope.launch (Dispatchers.IO){
-            repository.getCategories().collect{
+    override fun update() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.getCategories().collect {
                 categoryListLiveData.postValue(it)
             }
         }

@@ -1,6 +1,7 @@
 package uz.gita.firebasesample.presentation.viewmodel.impl
 
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -29,6 +30,7 @@ class AddCategoryViewModelImpl @Inject constructor(
             val imageUrl = repository.uploadImage(uri)
             repository.addCategory(productCategoryData.copy(imageUrl = imageUrl))
             closeScreenLiveData.value = Unit
+
         }
     }
 

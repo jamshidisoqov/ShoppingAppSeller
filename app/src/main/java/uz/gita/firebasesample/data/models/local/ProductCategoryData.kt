@@ -8,7 +8,7 @@ import java.util.*
 
 // Created by Jamshid Isoqov an 9/17/2022
 
-data class ProductCategoryData(
+data class  ProductCategoryData(
     val id: String= UUID.randomUUID().toString(),
     val name: String,
     val imageUrl: String = "",

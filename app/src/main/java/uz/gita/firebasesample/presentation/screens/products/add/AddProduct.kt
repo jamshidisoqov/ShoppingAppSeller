@@ -67,6 +67,7 @@ class AddProduct : Fragment(R.layout.screen_add_product) {
         binding.addBtn.setOnClickListener {
             addAttr()
         }
+
         binding.rv.adapter = adapter
         viewModel.messageLiveData.observe(this, messageObserver)
 

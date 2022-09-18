@@ -7,9 +7,11 @@ import uz.gita.firebasesample.data.models.local.ProductCategoryData
 // Created by Jamshid Isoqov an 9/18/2022
 interface CategoriesViewModel {
 
-    val categoryListLiveData:LiveData<List<ProductCategoryData>>
+    val categoryListLiveData: LiveData<List<ProductCategoryData>>
 
     fun openAddCategory()
+
+    fun update()
 
     fun openProductScreen(productCategoryData: ProductCategoryData)
 }
