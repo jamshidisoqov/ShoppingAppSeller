@@ -7,44 +7,31 @@
 
     <fragment
         android:id="@+id/loginScreen"
-        tools:layout="@layout/screen_login"
         android:name="uz.gita.firebasesample.presentation.screens.login.LoginScreen"
-        android:label="LoginScreen" >
-
+        android:label="LoginScreen"
+        tools:layout="@layout/screen_login" >
         <action
-            android:id="@+id/action_loginScreen_to_category"
-            app:destination="@id/category" />
-        <action
-            android:id="@+id/action_loginScreen_to_orders"
-            app:destination="@id/orders" />
+            android:id="@+id/action_loginScreen_to_mainScreen"
+            app:destination="@id/mainScreen" />
     </fragment>
     <fragment
-        tools:layout="@layout/screen_add_product"
         android:id="@+id/addProduct"
         android:name="uz.gita.firebasesample.presentation.screens.products.add.AddProduct"
-        android:label="AddProduct" />
+        android:label="AddProduct"
+        tools:layout="@layout/screen_add_product" />
+
     <fragment
-        tools:layout="@layout/page_categories"
-        android:id="@+id/category"
-        android:name="uz.gita.firebasesample.presentation.screens.main.pages.CategoryPage"
-        android:label="Category" >
-        <action
-            android:id="@+id/action_category_to_addCategory"
-            app:destination="@id/addCategory" />
-    </fragment>
-    <fragment
-        tools:layout="@layout/page_orders"
-        android:id="@+id/orders"
-        android:name="uz.gita.firebasesample.presentation.screens.main.pages.OrdersPage"
-        android:label="Orders" />
-    <fragment
-        tools:layout="@layout/screen_products"
         android:id="@+id/productsScreen"
         android:name="uz.gita.firebasesample.presentation.screens.products.ProductsScreen"
-        android:label="ProductsScreen" />
+        android:label="ProductsScreen"
+        tools:layout="@layout/screen_products" />
     <fragment
-        tools:layout="@layout/screen_add_category"
         android:id="@+id/addCategory"
         android:name="uz.gita.firebasesample.presentation.screens.add_category.AddCategory"
-        android:label="AddCategory" />
+        android:label="AddCategory"
+        tools:layout="@layout/screen_add_category" />
+    <fragment
+        android:id="@+id/mainScreen"
+        android:name="uz.gita.firebasesample.presentation.screens.main.MainScreen"
+        android:label="MainScreen" />
 </navigation>

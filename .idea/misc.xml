@@ -3,6 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GITA/ShoppingAppSeller2/app/src/main/res/drawable/back_style_back.xml" value="0.167" />
+        <entry key="..\:/GITA/ShoppingAppSeller2/app/src/main/res/layout/dialog_choice.xml" value="0.2" />
+        <entry key="..\:/GITA/ShoppingAppSeller2/app/src/main/res/layout/item_att.xml" value="0.19895833333333332" />
+        <entry key="..\:/GITA/ShoppingAppSeller2/app/src/main/res/layout/item_category.xml" value="0.2" />
+        <entry key="..\:/GITA/ShoppingAppSeller2/app/src/main/res/layout/page_categories.xml" value="0.2" />
+        <entry key="..\:/GITA/ShoppingAppSeller2/app/src/main/res/layout/page_orders.xml" value="0.2" />
+        <entry key="..\:/GITA/ShoppingAppSeller2/app/src/main/res/layout/screen_add_category.xml" value="0.2" />
+        <entry key="..\:/GITA/ShoppingAppSeller2/app/src/main/res/layout/screen_add_product.xml" value="0.18" />
+        <entry key="..\:/GITA/ShoppingAppSeller2/app/src/main/res/layout/screen_products.xml" value="0.2" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/drawable-v24/bg_list_orders.xml" value="0.1595" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/drawable/bg_btn_screen.xml" value="0.1595" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/drawable/bg_list_orders.xml" value="0.1595" />
