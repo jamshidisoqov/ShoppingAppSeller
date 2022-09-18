@@ -15,8 +15,27 @@ import uz.gita.firebasesample.presentation.viewmodel.CategoriesViewModel
 import uz.gita.firebasesample.repository.local.Repository
 import javax.inject.Inject
 
+@HiltViewModel
 class CategoriesViewModelImpl @Inject constructor(
-    repository: Repository
+    private val repository: Repository,
+    private val sharedPref: MySharedPref,
+    private val navigator: Navigator
 ) : CategoriesViewModel, ViewModel(){
 
+    override val categoryListLiveData = MutableLiveData<List<ProductCategoryData>>()
+
+    override fun openAddCategory() {
+
+    }
+
+    override fun openProductScreen(productCategoryData: ProductCategoryData) {
+    }
+
+    init {
+        viewModelScope.launch (Dispatchers.IO){
+            repository.getCategories().collect{
+                categoryListLiveData.postValue(it)
+            }
+        }
+    }
 }

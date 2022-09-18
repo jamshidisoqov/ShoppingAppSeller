@@ -47,4 +47,8 @@
         android:id="@+id/addCategory"
         android:name="uz.gita.firebasesample.presentation.screens.add_category.AddCategory"
         android:label="AddCategory" />
+    <fragment
+        android:id="@+id/mainScreen"
+        android:name="uz.gita.firebasesample.presentation.screens.main.MainScreen"
+        android:label="MainScreen" />
 </navigation>
