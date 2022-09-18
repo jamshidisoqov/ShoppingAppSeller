@@ -1,21 +1,19 @@
 package uz.gita.firebasesample.repository.firebase
 
 import android.net.Uri
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.UploadTask
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import uz.gita.firebasesample.data.Mapper
+import kotlinx.coroutines.tasks.await
 import uz.gita.firebasesample.data.Mapper.toCategory
 import uz.gita.firebasesample.data.Mapper.toOrder
 import uz.gita.firebasesample.data.Mapper.toProduct
+import uz.gita.firebasesample.data.Mapper.toStore
 import uz.gita.firebasesample.data.models.firebase.CategoryEntity
 import uz.gita.firebasesample.data.models.firebase.OrderEntity
 import uz.gita.firebasesample.data.models.firebase.ProductEntity
-import uz.gita.firebasesample.data.models.firebase.StoreEntity
 import uz.gita.firebasesample.data.pref.MySharedPref
 import java.util.*
 import javax.inject.Inject
@@ -27,15 +25,9 @@ class StoreRepositoryImpl @Inject constructor(
     private val db = Firebase.firestore
 
     override suspend fun loginSore(login: String, password: String): Boolean {
-        val list = ArrayList<StoreEntity>()
-        db.collection("admin").get()
-            .addOnSuccessListener {
-                val ls = it.documents.map { item ->
-                    Mapper.run {
-                        item.toStore()
-                    }
-                }
-                list.addAll(ls)
+        val list = db.collection("admin").get().await().documents
+            .map {
+                it.toStore()
             }
         list.filter {
             it.login == login && it.password == password
@@ -47,15 +39,10 @@ class StoreRepositoryImpl @Inject constructor(
     }
 
     override fun getCategories(): Flow<List<CategoryEntity>> = flow {
-        val list = ArrayList<CategoryEntity>()
-        db.collection("categories").get()
-            .addOnSuccessListener {
-                val ls = it.documents.map { item ->
-                    item.toCategory()
-                }
-                list.addAll(ls)
+        val list = db.collection("categories").get().await().documents
+            .map {
+                it.toCategory()
             }
-
         emit(list)
     }
 
