@@ -14,15 +14,15 @@ import javax.inject.Inject
 class LoginViewModelImpl @Inject constructor(
     private val repository: Repository,
     private val sharedPref: MySharedPref
-) : LoginViewModel,ViewModel() {
+) : LoginViewModel, ViewModel() {
 
     override val errorFlow = MutableSharedFlow<Unit>()
 
     override fun login(login: String, password: String) {
         viewModelScope.launch {
-        if(repository.loginStore(login, password)){
+            if (repository.loginStore(login, password)) {
 
-        }
+            }
         }
     }
 }
