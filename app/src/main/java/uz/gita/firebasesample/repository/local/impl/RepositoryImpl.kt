@@ -50,4 +50,8 @@ class RepositoryImpl @Inject constructor(
                 it.toOrderData()
             }
         }
+
+    override fun uploadImage() {
+        TODO("Not yet implemented")
+    }
 }
