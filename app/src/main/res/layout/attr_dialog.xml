@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/_10sdp">
+
+    <TextView
+
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:text="@string/add_attributes"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_20sdp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:hint="name"
+        android:background="@drawable/back_style_back"
+        android:padding="@dimen/_5sdp" />
+
+
+    <EditText
+        android:id="@+id/desc"
+        android:layout_width="@dimen/_260sdp"
+        android:hint="Descpription"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/back_style_back"
+        android:padding="@dimen/_5sdp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+
+        android:id="@+id/save"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:background="@drawable/bg_btn_screen"
+        android:text="Save"
+        android:textColor="@color/white" />
+</LinearLayout>

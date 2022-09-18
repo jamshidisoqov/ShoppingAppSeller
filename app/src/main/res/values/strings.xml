@@ -9,4 +9,5 @@
     <string name="bahosi">Bahosi</string>
     <string name="name">Name</string>
     <string name="attributes">Attributes</string>
+    <string name="add_attributes">Add Attributes</string>
 </resources>

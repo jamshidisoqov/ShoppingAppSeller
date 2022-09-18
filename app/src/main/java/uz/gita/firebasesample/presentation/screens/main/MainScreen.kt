@@ -5,11 +5,13 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 import uz.gita.firebasesample.R
 import uz.gita.firebasesample.databinding.ScreenMainBinding
 import uz.gita.firebasesample.presentation.screens.adapter.StorePagerAdapter
 
 // Created by Jamshid Isoqov an 9/18/2022
+@AndroidEntryPoint
 class MainScreen :  Fragment(R.layout.screen_main){
 
     private var list = arrayListOf("Category","Orders")

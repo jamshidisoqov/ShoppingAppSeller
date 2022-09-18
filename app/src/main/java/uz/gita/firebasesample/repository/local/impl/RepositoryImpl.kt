@@ -37,7 +37,7 @@ class RepositoryImpl @Inject constructor(
     override suspend fun addProducts(productData: ProductData) =
         storeRepository.addProducts(productData.toProductEntity())
 
-    override fun searchProducts(query: String,categoryId:String): Flow<List<ProductData>> =
+    override fun searchProducts(query: String, categoryId: String): Flow<List<ProductData>> =
         storeRepository.getProductsByCategory(categoryId).map { products ->
             products.map {
                 it.toProductData()
@@ -50,4 +50,6 @@ class RepositoryImpl @Inject constructor(
                 it.toOrderData()
             }
         }
+
+    override suspend fun uploadImage(uri: Uri): String = storeRepository.uploadImage(uri)
 }
