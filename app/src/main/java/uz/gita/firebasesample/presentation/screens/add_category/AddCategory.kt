@@ -10,6 +10,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gita.firebasesample.R
@@ -25,6 +26,15 @@ import uz.gita.firebasesample.presentation.viewmodel.impl.AddCategoryViewModelIm
 class AddCategory : Fragment(R.layout.screen_add_category) {
     private val viewBinding: ScreenAddCategoryBinding by viewBinding(ScreenAddCategoryBinding::bind)
     private val viewModel: AddCategoryViewModel by viewModels<AddCategoryViewModelImpl>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        viewModel.closeScreenLiveData.observe(this){
+            findNavController().navigateUp()
+        }
+
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         addPictureToCategoryImage()
