@@ -1,5 +1,6 @@
 package uz.gita.firebasesample.repository.firebase
 
+import android.net.Uri
 import kotlinx.coroutines.flow.Flow
 import uz.gita.firebasesample.data.models.firebase.CategoryEntity
 import uz.gita.firebasesample.data.models.firebase.OrderEntity
@@ -21,5 +22,7 @@ interface StoreRepository {
     suspend fun addProducts(productEntity: ProductEntity)
 
     fun getAllOrders(): Flow<List<OrderEntity>>
+
+    suspend fun uploadImage(uri: Uri):String
 
 }
