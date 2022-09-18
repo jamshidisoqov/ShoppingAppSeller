@@ -10,9 +10,11 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gita.firebasesample.R
+import uz.gita.firebasesample.data.models.local.ProductCategoryData
 import uz.gita.firebasesample.databinding.DialogChoiceBinding
 import uz.gita.firebasesample.databinding.ScreenAddCategoryBinding
 import uz.gita.firebasesample.presentation.viewmodel.AddCategoryViewModel
@@ -25,9 +27,29 @@ class AddCategory : Fragment(R.layout.screen_add_category) {
     private val viewBinding: ScreenAddCategoryBinding by viewBinding(ScreenAddCategoryBinding::bind)
     private val viewModel: AddCategoryViewModel by viewModels<AddCategoryViewModelImpl>()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        viewModel.closeScreenLiveData.observe(this){
+            findNavController().navigateUp()
+        }
+
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         addPictureToCategoryImage()
 
+        viewBinding.btnAddCategory.setOnClickListener {
+            if (viewBinding.etNameCategory.text.isNotEmpty() && viewBinding.etTagCategory.text.isNotEmpty()) {
+                val split = viewBinding.etTagCategory.text.split(" ")
+                viewModel.addCategory(
+                    ProductCategoryData(
+                        name = viewBinding.etNameCategory.text.toString(),
+                        tags = split.toList()
+                    )
+                )
+            }
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -35,7 +57,7 @@ class AddCategory : Fragment(R.layout.screen_add_category) {
 
         if (requestCode == 123) {
             viewModel.uploadImage(data?.data!!)
-            val bmp = data?.extras?.get("data") as Bitmap
+            val bmp = data.extras?.get("data") as Bitmap
             viewBinding.tvImageCategory.setImageBitmap(bmp)
         } else if (requestCode == 456) {
             viewBinding.tvImageCategory.setImageURI(data?.data)
