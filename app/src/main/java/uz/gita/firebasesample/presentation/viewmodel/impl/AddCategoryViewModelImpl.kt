@@ -14,8 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AddCategoryViewModelImpl @Inject constructor(
-    private val repository: Repository,
-    private val navigator: Navigator
+    private val repository: Repository
 ) : AddCategoryViewModel, ViewModel() {
 
     private lateinit var uri: Uri
