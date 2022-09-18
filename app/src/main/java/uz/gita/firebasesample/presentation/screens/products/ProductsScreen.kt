@@ -63,5 +63,6 @@ class ProductsScreen:Fragment (R.layout.screen_products) {
             }
 
         })
+
     }
 }

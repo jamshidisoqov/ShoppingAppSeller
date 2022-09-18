@@ -16,4 +16,5 @@ interface ProductsViewModel {
     fun openAddProductScreen()
 
     fun searchProduct(query:String)
+
 }
