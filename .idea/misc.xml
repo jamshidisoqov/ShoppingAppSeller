@@ -5,7 +5,14 @@
       <map>
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/drawable/bg_btn_screen.xml" value="0.1595" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/activity_main.xml" value="0.2484375" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/page_categories.xml" value="0.2484375" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/page_orders.xml" value="0.2484375" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/screen_add_category.xml" value="0.2484375" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/screen_add_product.xml" value="0.24739583333333334" />
         <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/screen_login.xml" value="0.2484375" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/screen_main.xml" value="0.2484375" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/screen_product_details.xml" value="0.2484375" />
+        <entry key="..\:/Users/Jamshid/AndroidStudioProjects/FireBaseSample/app/src/main/res/layout/screen_products.xml" value="0.24739583333333334" />
       </map>
     </option>
   </component>
