@@ -9,5 +9,42 @@
         android:id="@+id/loginScreen"
         tools:layout="@layout/screen_login"
         android:name="uz.gita.firebasesample.presentation.screens.login.LoginScreen"
-        android:label="LoginScreen" />
+        android:label="LoginScreen" >
+
+        <action
+            android:id="@+id/action_loginScreen_to_category"
+            app:destination="@id/category" />
+        <action
+            android:id="@+id/action_loginScreen_to_orders"
+            app:destination="@id/orders" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/screen_add_product"
+        android:id="@+id/addProduct"
+        android:name="uz.gita.firebasesample.presentation.screens.products.add.AddProduct"
+        android:label="AddProduct" />
+    <fragment
+        tools:layout="@layout/page_categories"
+        android:id="@+id/category"
+        android:name="uz.gita.firebasesample.presentation.screens.main.pages.Category"
+        android:label="Category" >
+        <action
+            android:id="@+id/action_category_to_addCategory"
+            app:destination="@id/addCategory" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/page_orders"
+        android:id="@+id/orders"
+        android:name="uz.gita.firebasesample.presentation.screens.main.pages.Orders"
+        android:label="Orders" />
+    <fragment
+        tools:layout="@layout/screen_products"
+        android:id="@+id/productsScreen"
+        android:name="uz.gita.firebasesample.presentation.screens.products.ProductsScreen"
+        android:label="ProductsScreen" />
+    <fragment
+        tools:layout="@layout/screen_add_category"
+        android:id="@+id/addCategory"
+        android:name="uz.gita.firebasesample.presentation.screens.add_category.AddCategory"
+        android:label="AddCategory" />
 </navigation>
