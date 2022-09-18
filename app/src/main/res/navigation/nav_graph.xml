@@ -11,13 +11,8 @@
         android:label="LoginScreen"
         tools:layout="@layout/screen_login" >
         <action
-            android:id="@+id/action_loginScreen_to_mainScreen"
+            android:id="@+id/action_loginScreen_to_mainScreen3"
             app:destination="@id/mainScreen" />
-        android:label="LoginScreen" >
-        <action
-            android:id="@+id/action_loginScreen_to_mainScreen"
-            app:destination="@id/mainScreen"
-            app:popUpTo="@id/nav_graph" />
     </fragment>
     <fragment
         android:id="@+id/addProduct"
@@ -25,8 +20,6 @@
         android:label="AddProduct"
         tools:layout="@layout/screen_add_product" />
 
-    <fragment
-        android:label="AddProduct" />
     <fragment
         tools:layout="@layout/screen_products"
         android:id="@+id/productsScreen"
@@ -42,18 +35,12 @@
             android:id="@+id/action_productsScreen_to_productDetailsScreen"
             app:destination="@id/productDetailsScreen" />
     </fragment>
-        android:label="ProductsScreen"
-        tools:layout="@layout/screen_products" />
+
     <fragment
         android:id="@+id/addCategory"
         android:name="uz.gita.firebasesample.presentation.screens.add_category.AddCategory"
         android:label="AddCategory"
         tools:layout="@layout/screen_add_category" />
-    <fragment
-        android:id="@+id/mainScreen"
-        android:name="uz.gita.firebasesample.presentation.screens.main.MainScreen"
-        android:label="MainScreen" />
-        android:label="AddCategory" />
     <fragment
         tools:layout="@layout/screen_main"
         android:id="@+id/mainScreen"
