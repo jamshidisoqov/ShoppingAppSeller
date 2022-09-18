@@ -26,7 +26,7 @@
     <fragment
         tools:layout="@layout/page_categories"
         android:id="@+id/category"
-        android:name="uz.gita.firebasesample.presentation.screens.main.pages.Category"
+        android:name="uz.gita.firebasesample.presentation.screens.main.pages.CategoryPage"
         android:label="Category" >
         <action
             android:id="@+id/action_category_to_addCategory"
@@ -35,7 +35,7 @@
     <fragment
         tools:layout="@layout/page_orders"
         android:id="@+id/orders"
-        android:name="uz.gita.firebasesample.presentation.screens.main.pages.Orders"
+        android:name="uz.gita.firebasesample.presentation.screens.main.pages.OrdersPage"
         android:label="Orders" />
     <fragment
         tools:layout="@layout/screen_products"
