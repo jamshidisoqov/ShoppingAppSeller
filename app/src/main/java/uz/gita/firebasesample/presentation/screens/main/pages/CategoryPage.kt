@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import uz.gita.firebasesample.R
 import uz.gita.firebasesample.databinding.PageCategoriesBinding
+import uz.gita.firebasesample.presentation.screens.adapter.CategoryAdapter
 import uz.gita.firebasesample.presentation.viewmodel.CategoriesViewModel
 import uz.gita.firebasesample.presentation.viewmodel.impl.CategoriesViewModelImpl
 
@@ -16,8 +17,14 @@ class CategoryPage : Fragment(R.layout.page_categories) {
     private val viewBinding:PageCategoriesBinding by viewBinding(PageCategoriesBinding::bind)
     private val viewModel:CategoriesViewModel by viewModels<CategoriesViewModelImpl>()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    private val adapter:CategoryAdapter by lazy { CategoryAdapter() }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewBinding.categoryList.adapter = adapter
+
+        adapter.setOnClickItemListener {
+            viewModel.openProductScreen(it)
+        }
     }
 
 }
