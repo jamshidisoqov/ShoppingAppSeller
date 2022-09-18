@@ -1,6 +1,7 @@
 package uz.gita.firebasesample.presentation.screens.products
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -19,25 +20,26 @@ import uz.gita.firebasesample.presentation.viewmodel.impl.ProductsViewModelImpl
 
 // Created by Jamshid Isoqov an 9/18/2022
 @AndroidEntryPoint
-class ProductsScreen:Fragment (R.layout.screen_products) {
+class ProductsScreen : Fragment(R.layout.screen_products) {
 
-    private val adapter:ProductAdapter by lazy { ProductAdapter() }
-    private val viewModel:ProductsViewModel by viewModels<ProductsViewModelImpl>()
-    private val viewBinding:ScreenProductsBinding by viewBinding(ScreenProductsBinding::bind)
+    private val adapter: ProductAdapter by lazy { ProductAdapter() }
+    private val viewModel: ProductsViewModel by viewModels<ProductsViewModelImpl>()
+    private val viewBinding: ScreenProductsBinding by viewBinding(ScreenProductsBinding::bind)
 
-    private val args:ProductsScreenArgs by navArgs()
+    private val args: ProductsScreenArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.getProductsByCategoryId(args.category)
+        Log.d("PPP", args.category.toString())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewBinding.productList.adapter = adapter
-        viewModel.productListLiveData.observe(viewLifecycleOwner){
-            if (it.isEmpty()){
+        viewModel.productListLiveData.observe(viewLifecycleOwner) {
+            if (it.isEmpty()) {
                 viewBinding.emptyPlaceholder.visibility = View.VISIBLE
-            }else{
+            } else {
                 viewBinding.emptyPlaceholder.visibility = View.GONE
             }
             adapter.submitList(it)
@@ -48,10 +50,10 @@ class ProductsScreen:Fragment (R.layout.screen_products) {
         }
 
         viewBinding.addProduct.setOnClickListener {
-            viewModel.openAddProductScreen()
+            viewModel.openAddProductScreen(args.category)
         }
 
-        viewBinding.productSearch.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
+        viewBinding.productSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
             }

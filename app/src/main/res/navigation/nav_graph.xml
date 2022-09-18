@@ -9,22 +9,31 @@
         android:id="@+id/loginScreen"
         android:name="uz.gita.firebasesample.presentation.screens.login.LoginScreen"
         android:label="LoginScreen"
-        tools:layout="@layout/screen_login" >
+        tools:layout="@layout/screen_login">
         <action
             android:id="@+id/action_loginScreen_to_mainScreen2"
             app:destination="@id/mainScreen" />
+
+
     </fragment>
+
     <fragment
         android:id="@+id/addProduct"
         android:name="uz.gita.firebasesample.presentation.screens.products.add.AddProduct"
         android:label="AddProduct"
-        tools:layout="@layout/screen_add_product" />
+        tools:layout="@layout/screen_add_product" >
+
+        <argument
+            android:name="category"
+            app:argType="uz.gita.firebasesample.data.models.local.ProductCategoryData" />
+    </fragment>
+
 
     <fragment
-        tools:layout="@layout/screen_products"
         android:id="@+id/productsScreen"
         android:name="uz.gita.firebasesample.presentation.screens.products.ProductsScreen"
-        android:label="ProductsScreen" >
+        android:label="ProductsScreen"
+        tools:layout="@layout/screen_products">
         <action
             android:id="@+id/action_productsScreen_to_addProduct"
             app:destination="@id/addProduct" />
@@ -41,11 +50,12 @@
         android:name="uz.gita.firebasesample.presentation.screens.add_category.AddCategory"
         android:label="AddCategory"
         tools:layout="@layout/screen_add_category" />
+
     <fragment
-        tools:layout="@layout/screen_main"
         android:id="@+id/mainScreen"
         android:name="uz.gita.firebasesample.presentation.screens.main.MainScreen"
-        android:label="MainScreen" >
+        android:label="MainScreen"
+        tools:layout="@layout/screen_main">
         <action
             android:id="@+id/action_mainScreen_to_productsScreen"
             app:destination="@id/productsScreen" />
@@ -53,11 +63,12 @@
             android:id="@+id/action_mainScreen_to_addCategory"
             app:destination="@id/addCategory" />
     </fragment>
+
     <fragment
         android:id="@+id/productDetailsScreen"
-        tools:layout="@layout/screen_product_details"
         android:name="uz.gita.firebasesample.presentation.screens.products.details.ProductDetailsScreen"
-        android:label="ProductDetailsScreen" >
+        android:label="ProductDetailsScreen"
+        tools:layout="@layout/screen_product_details">
         <argument
             android:name="product"
             app:argType="uz.gita.firebasesample.data.models.local.ProductData" />

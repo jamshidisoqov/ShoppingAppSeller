@@ -8,12 +8,14 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,9 +27,6 @@ import uz.gita.firebasesample.databinding.ScreenAddProductBinding
 import uz.gita.firebasesample.presentation.screens.adapter.AttrAdapter
 import uz.gita.firebasesample.presentation.viewmodel.AddProductViewModel
 import uz.gita.firebasesample.presentation.viewmodel.impl.AddProductViewModelImpl
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -39,8 +38,10 @@ class AddProduct : Fragment(R.layout.screen_add_product) {
     private val binding: ScreenAddProductBinding by viewBinding(ScreenAddProductBinding::bind)
     private val viewModel: AddProductViewModel by viewModels<AddProductViewModelImpl>()
     private lateinit var uri: Uri
+    private lateinit var url: String
     private val adapter: AttrAdapter by lazy { AttrAdapter() }
     private val attrList = ArrayList<Pair<String, String>>()
+    private val args: AddProductArgs by navArgs()
 
     @SuppressLint("FragmentLiveDataObserve")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,17 +51,18 @@ class AddProduct : Fragment(R.layout.screen_add_product) {
             showGalleryDialog()
         }
 
-
-        viewModel.addProduct(
-            ProductData(
-                name = binding.etName.text.toString(),
-                description = binding.etDesc.text.toString(),
-                photos = "",
-                sell = binding.etPrice.text.toString(),
-                attrs = attrList
-            ),
-            uri
-        )
+        binding.add.setOnClickListener {
+            viewModel.addProduct(
+                ProductData(
+                    categoryId = args.category.id,
+                    name = binding.etName.text.toString(),
+                    description = binding.etDesc.text.toString(),
+                    photos = "salom",
+                    sell = binding.etPrice.text.toString(),
+                    attrs = attrList
+                )
+            )
+        }
 
         binding.addBtn.setOnClickListener {
             addAttr()
@@ -87,6 +89,9 @@ class AddProduct : Fragment(R.layout.screen_add_product) {
                     dialogBinding.desc.text.toString()
                 )
             )
+            adapter.submitList(attrList)
+
+            dialog.dismiss()
         }
         dialog.setView(dialogBinding.root)
         dialog.show()
@@ -106,7 +111,7 @@ class AddProduct : Fragment(R.layout.screen_add_product) {
         }
 
         dialogView.gallery.setOnClickListener {
-            var intent = Intent(Intent.ACTION_PICK)
+            val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             startActivityForResult(intent, 456)
             dialog.cancel()
@@ -126,6 +131,7 @@ class AddProduct : Fragment(R.layout.screen_add_product) {
         } else if (requestCode == 456) {
             binding.image.setImageURI(data?.data)
             uri = data?.data!!
+            url = viewModel.loadImage(uri)
         }
 
     }

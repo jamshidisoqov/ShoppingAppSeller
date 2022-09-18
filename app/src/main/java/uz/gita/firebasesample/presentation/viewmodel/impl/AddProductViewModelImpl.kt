@@ -26,28 +26,14 @@ class AddProductViewModelImpl @Inject constructor(private val repositoryImpl: Re
 
     override val messageLiveData: MutableLiveData<String> = MutableLiveData()
 
-    override fun addProduct(productData: ProductData, uri: Uri) {
+    override fun addProduct(productData: ProductData) {
 
 
         if (productData.name.isNotEmpty() && productData.description.isNotEmpty() && productData.sell.isNotEmpty()) {
 
             if (productData.photos.isNotEmpty()) {
-
-                var url = ""
                 viewModelScope.launch(Dispatchers.IO) {
-                    url = repositoryImpl.uploadImage(uri)
-                    repositoryImpl.addProducts(
-                        ProductData(
-                            productData.id,
-                            productData.categoryId,
-                            productData.name,
-                            productData.description,
-                            url,
-                            productData.sell,
-                            productData.attrs,
-                            productData.storeId
-                        )
-                    )
+                    repositoryImpl.addProducts(productData)
                     backLiveData.value = Unit
                     messageLiveData.value = "Saqlandi"
                 }
@@ -57,5 +43,14 @@ class AddProductViewModelImpl @Inject constructor(private val repositoryImpl: Re
         } else {
             messageLiveData.value = "Maydonlar bo'sh"
         }
+    }
+
+    override fun loadImage(uri: Uri): String {
+
+        var u = ""
+        viewModelScope.launch {
+            u = repositoryImpl.uploadImage(uri)
+        }
+        return u
     }
 }

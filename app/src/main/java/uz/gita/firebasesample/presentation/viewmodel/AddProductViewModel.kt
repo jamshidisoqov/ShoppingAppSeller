@@ -14,6 +14,8 @@ interface AddProductViewModel {
     val backLiveData: LiveData<Unit>
     val messageLiveData: LiveData<String>
 
-    fun addProduct(productData: ProductData, uri: Uri)
+    fun addProduct(productData: ProductData)
+
+    fun loadImage(uri: Uri): String
 
 }

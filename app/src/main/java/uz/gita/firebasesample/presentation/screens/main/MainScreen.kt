@@ -12,15 +12,18 @@ import uz.gita.firebasesample.presentation.screens.adapter.StorePagerAdapter
 
 // Created by Jamshid Isoqov an 9/18/2022
 @AndroidEntryPoint
-class MainScreen :  Fragment(R.layout.screen_main){
+class MainScreen : Fragment(R.layout.screen_main) {
 
-    private var list = arrayListOf("Category","Orders")
+    private var list = arrayListOf("Category", "Orders")
 
-    private val viewBinding:ScreenMainBinding by viewBinding(ScreenMainBinding::bind)
+    private val viewBinding: ScreenMainBinding by viewBinding(ScreenMainBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewBinding.viewPager.adapter = StorePagerAdapter(requireActivity())
 
+        TabLayoutMediator(viewBinding.tabLayout, viewBinding.viewPager) { tab, position ->
+            tab.text = "${list[position]}"
+        }.attach()
         TabLayoutMediator(viewBinding.tabLayout,viewBinding.viewPager){tab,position ->
             tab.text ="${list[position]}"
         }.attach()

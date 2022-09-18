@@ -4,11 +4,12 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import uz.gita.firebasesample.data.models.firebase.ProductEntity
 import java.io.Serializable
+import java.util.*
 
 // Created by Jamshid Isoqov an 9/17/2022
 data class ProductData(
-    val id: String = "",
-    val categoryId: String = "",
+    val id: String = UUID.randomUUID().toString(),
+    val categoryId: String,
     val name: String,
     val description: String,
     val photos: String,

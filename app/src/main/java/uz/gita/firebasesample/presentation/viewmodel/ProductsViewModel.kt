@@ -13,7 +13,7 @@ interface ProductsViewModel {
 
     fun openProductDetailsScreen(productData: ProductData)
 
-    fun openAddProductScreen()
+    fun openAddProductScreen(productCategoryData: ProductCategoryData)
 
     fun searchProduct(query:String)
 

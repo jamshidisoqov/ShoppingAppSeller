@@ -33,6 +33,7 @@ class CategoryPage : Fragment(R.layout.page_categories) {
         }
 
         adapter.setOnClickItemListener {
+
             viewModel.openProductScreen(it)
         }
 

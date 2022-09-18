@@ -34,8 +34,9 @@ class CategoriesViewModelImpl @Inject constructor(
         viewModelScope.launch {
             navigator.navigateTo(MainScreenDirections.actionMainScreenToProductsScreen(productCategoryData))
         }
-
     }
+
+
 
     init {
         viewModelScope.launch (Dispatchers.IO){

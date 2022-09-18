@@ -27,8 +27,8 @@ class ProductsViewModelImpl @Inject constructor(
 
 
     override fun getProductsByCategoryId(productCategoryData: ProductCategoryData) {
-        viewModelScope.launch (Dispatchers.IO){
-            repository.getProductsByCategory(productCategoryData).collect{
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.getProductsByCategory(productCategoryData).collect {
                 productListLiveData.postValue(it)
             }
         }
@@ -37,25 +37,32 @@ class ProductsViewModelImpl @Inject constructor(
 
     override fun openProductDetailsScreen(productData: ProductData) {
         viewModelScope.launch {
-            navigator.navigateTo(ProductsScreenDirections.actionProductsScreenToProductDetailsScreen(productData))
+            navigator.navigateTo(
+                ProductsScreenDirections.actionProductsScreenToProductDetailsScreen(
+                    productData
+                )
+            )
         }
 
     }
 
-    override fun openAddProductScreen() {
+    override fun openAddProductScreen(productCategoryData: ProductCategoryData) {
         viewModelScope.launch {
-            navigator.navigateTo(ProductsScreenDirections.actionProductsScreenToAddProduct())
+            navigator.navigateTo(
+                ProductsScreenDirections.actionProductsScreenToAddProduct(
+                    productCategoryData
+                )
+            )
         }
     }
 
     override fun searchProduct(query: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.searchProducts(query,sharedPref.getStoreId()).collect{
+            repository.searchProducts(query, sharedPref.getStoreId()).collect {
                 productListLiveData.postValue(it)
             }
         }
     }
-
 
 
 }

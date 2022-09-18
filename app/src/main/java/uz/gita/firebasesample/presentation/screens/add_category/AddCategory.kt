@@ -30,10 +30,9 @@ class AddCategory : Fragment(R.layout.screen_add_category) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.closeScreenLiveData.observe(this){
+        viewModel.closeScreenLiveData.observe(this) {
             findNavController().navigateUp()
         }
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
