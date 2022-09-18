@@ -20,4 +20,6 @@ interface Repository {
     fun searchProducts(query: String,categoryId:String): Flow<List<ProductData>>
 
     fun getAllOrders(): Flow<List<OrdersData>>
+
+    fun uploadImage()
 }
