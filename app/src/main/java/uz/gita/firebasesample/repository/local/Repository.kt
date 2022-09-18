@@ -1,5 +1,6 @@
 package uz.gita.firebasesample.repository.local
 
+import android.net.Uri
 import kotlinx.coroutines.flow.Flow
 import uz.gita.firebasesample.data.models.firebase.OrderEntity
 import uz.gita.firebasesample.data.models.local.*
@@ -21,5 +22,5 @@ interface Repository {
 
     fun getAllOrders(): Flow<List<OrdersData>>
 
-    fun uploadImage()
+    suspend fun uploadImage(uri:Uri):String
 }
