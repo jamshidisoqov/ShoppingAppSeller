@@ -12,6 +12,4 @@ class AddCategoryViewModelImpl @Inject constructor(
     private val repository: Repository
 ) : AddCategoryViewModel, ViewModel() {
 
-
-
 }
