@@ -22,7 +22,7 @@ class LoginViewModelImpl @Inject constructor(
     override fun login(login: String, password: String) {
         viewModelScope.launch {
             if (repository.loginStore(login, password)) {
-                navigator.navigateTo(LoginScreenDirections.actionLoginScreenToMainScreen2())
+                navigator.navigateTo(LoginScreenDirections.actionLoginScreenToMainScreen())
             } else {
                 errorFlow.emit(Unit)
             }

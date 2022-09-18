@@ -128,10 +128,11 @@ class AddProduct : Fragment(R.layout.screen_add_product) {
         if (requestCode == 123) {
             var bmp = data?.extras?.get("data") as Bitmap
             binding.image.setImageBitmap(bmp)
+            viewModel.loadImage(uri)
         } else if (requestCode == 456) {
             binding.image.setImageURI(data?.data)
             uri = data?.data!!
-            url = viewModel.loadImage(uri)
+            viewModel.loadImage(uri)
         }
 
     }

@@ -16,6 +16,6 @@ interface AddProductViewModel {
 
     fun addProduct(productData: ProductData)
 
-    fun loadImage(uri: Uri): String
+    fun loadImage(uri: Uri)
 
 }
