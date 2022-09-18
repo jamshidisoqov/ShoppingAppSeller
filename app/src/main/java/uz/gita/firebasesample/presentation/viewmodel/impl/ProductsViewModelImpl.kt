@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import uz.gita.firebasesample.data.models.local.ProductCategoryData
 import uz.gita.firebasesample.data.models.local.ProductData
@@ -26,7 +27,7 @@ class ProductsViewModelImpl @Inject constructor(
 
 
     override fun getProductsByCategoryId(productCategoryData: ProductCategoryData) {
-        viewModelScope.launch {
+        viewModelScope.launch (Dispatchers.IO){
             repository.getProductsByCategory(productCategoryData).collect{
                 productListLiveData.postValue(it)
             }
@@ -48,7 +49,7 @@ class ProductsViewModelImpl @Inject constructor(
     }
 
     override fun searchProduct(query: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.searchProducts(query,sharedPref.getStoreId()).collect{
                 productListLiveData.postValue(it)
             }

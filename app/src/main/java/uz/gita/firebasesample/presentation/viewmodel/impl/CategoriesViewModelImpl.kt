@@ -42,7 +42,6 @@ class CategoriesViewModelImpl @Inject constructor(
             repository.getCategories().collect{
                 categoryListLiveData.postValue(it)
             }
-            repository
         }
     }
 }
