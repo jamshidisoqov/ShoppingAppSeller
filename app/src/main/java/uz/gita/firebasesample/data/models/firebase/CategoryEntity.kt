@@ -15,7 +15,7 @@ data class CategoryEntity(
 
     fun toCategoryData(): ProductCategoryData {
         val type = object : TypeToken<List<String>>() {}.type
-        val tagsList = gson.fromJson<List<String>>(tags, type)
+        val tagsList = gson.fromJson<List<String>>("[]", type)
         return ProductCategoryData(id, name, image, tagsList)
     }
 }

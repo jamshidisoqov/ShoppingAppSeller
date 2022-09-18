@@ -15,7 +15,6 @@ data class OrderEntity(
 ) {
     fun toOrderData(): OrdersData {
         val gson = Gson()
-        Log.d("TTT", "toOrderData:${details}")
         val type = object : TypeToken<List<Order>>() {}.type
         val list = gson.fromJson<List<Order>>(details, type)
         return OrdersData(id, clientId, status, list)

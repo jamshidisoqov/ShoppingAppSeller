@@ -12,7 +12,7 @@ class StorePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
 
     override fun createFragment(position: Int): Fragment =
         when (position) {
-            1 -> {
+            0 -> {
                 CategoryPage()
             }
             else -> {
