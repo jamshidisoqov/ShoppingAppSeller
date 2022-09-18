@@ -23,4 +23,6 @@ interface Repository {
     fun getAllOrders(): Flow<List<OrdersData>>
 
     suspend fun uploadImage(uri:Uri):String
+
+    suspend fun addCategory(productCategoryData: ProductCategoryData)
 }

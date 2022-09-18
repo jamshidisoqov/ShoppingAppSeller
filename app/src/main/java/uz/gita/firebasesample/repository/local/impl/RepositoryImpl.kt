@@ -52,4 +52,6 @@ class RepositoryImpl @Inject constructor(
         }
 
     override suspend fun uploadImage(uri: Uri): String = storeRepository.uploadImage(uri)
+    override suspend fun addCategory(productCategoryData: ProductCategoryData) =
+        storeRepository.addCategory(productCategoryData.toCategoryEntity())
 }
