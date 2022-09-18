@@ -1,5 +1,6 @@
 package uz.gita.firebasesample.data.models.firebase
 
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import uz.gita.firebasesample.data.models.local.Order
@@ -14,6 +15,7 @@ data class OrderEntity(
 ) {
     fun toOrderData(): OrdersData {
         val gson = Gson()
+        Log.d("TTT", "toOrderData:${details}")
         val type = object : TypeToken<List<Order>>() {}.type
         val list = gson.fromJson<List<Order>>(details, type)
         return OrdersData(id, clientId, status, list)

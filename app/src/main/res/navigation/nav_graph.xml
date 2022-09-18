@@ -11,7 +11,7 @@
         android:label="LoginScreen"
         tools:layout="@layout/screen_login" >
         <action
-            android:id="@+id/action_loginScreen_to_mainScreen3"
+            android:id="@+id/action_loginScreen_to_mainScreen2"
             app:destination="@id/mainScreen" />
     </fragment>
     <fragment
