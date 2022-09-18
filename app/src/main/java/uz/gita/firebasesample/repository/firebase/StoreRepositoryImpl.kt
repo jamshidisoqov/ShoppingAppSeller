@@ -1,7 +1,11 @@
 package uz.gita.firebasesample.repository.firebase
 
+import android.net.Uri
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.UploadTask
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import uz.gita.firebasesample.data.Mapper
@@ -13,6 +17,7 @@ import uz.gita.firebasesample.data.models.firebase.OrderEntity
 import uz.gita.firebasesample.data.models.firebase.ProductEntity
 import uz.gita.firebasesample.data.models.firebase.StoreEntity
 import uz.gita.firebasesample.data.pref.MySharedPref
+import java.util.*
 import javax.inject.Inject
 
 class StoreRepositoryImpl @Inject constructor(
@@ -93,9 +98,25 @@ class StoreRepositoryImpl @Inject constructor(
         emit(list)
     }
 
+    override suspend fun uploadImage(uri: Uri): String {
 
-    private fun upload(){
+        val fileName = UUID.randomUUID().toString() + ".jpg"
 
+        var imageUrl = ""
+
+        val refStorage = FirebaseStorage.getInstance().reference.child("images/$fileName")
+
+        refStorage.putFile(uri).addOnSuccessListener { taskSnapshot ->
+            taskSnapshot.storage.downloadUrl.addOnSuccessListener {
+                imageUrl = it.toString()
+            }
+        }
+
+            .addOnFailureListener { e ->
+                print(e.message)
+            }
+
+        return imageUrl
     }
 
 
