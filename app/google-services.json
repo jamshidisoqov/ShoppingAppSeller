@@ -1,0 +1,127 @@
+{
+  "project_info": {
+    "project_number": "653313646436",
+    "firebase_url": "https://shopping-app-da492-default-rtdb.firebaseio.com",
+    "project_id": "shopping-app-da492",
+    "storage_bucket": "shopping-app-da492.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653313646436:android:d8e221cb82675440cde471",
+        "android_client_info": {
+          "package_name": "uz.gita.client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "653313646436-hhrh3faaih4m5jovscnuu60psgof2vu7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRvAram3RhrY_yzy4bcr5ru2xTbpySZgw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "653313646436-hhrh3faaih4m5jovscnuu60psgof2vu7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653313646436:android:d100b09cc1b8b10dcde471",
+        "android_client_info": {
+          "package_name": "uz.gita.firebasesample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "653313646436-hhrh3faaih4m5jovscnuu60psgof2vu7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRvAram3RhrY_yzy4bcr5ru2xTbpySZgw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "653313646436-hhrh3faaih4m5jovscnuu60psgof2vu7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653313646436:android:c586fc31fa5720a5cde471",
+        "android_client_info": {
+          "package_name": "uz.gita.store"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "653313646436-hhrh3faaih4m5jovscnuu60psgof2vu7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRvAram3RhrY_yzy4bcr5ru2xTbpySZgw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "653313646436-hhrh3faaih4m5jovscnuu60psgof2vu7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653313646436:android:4fa3bcfa3ef11e0fcde471",
+        "android_client_info": {
+          "package_name": "uz.gita.veryimportantexamwithgroup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "653313646436-hhrh3faaih4m5jovscnuu60psgof2vu7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRvAram3RhrY_yzy4bcr5ru2xTbpySZgw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "653313646436-hhrh3faaih4m5jovscnuu60psgof2vu7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
