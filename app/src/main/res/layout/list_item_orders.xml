@@ -35,6 +35,6 @@
         android:layout_centerVertical="true"
         android:textSize="16sp"
         tools:ignore="RelativeOverlap"
-        tools:text="Tasdiqlash" />
+        tools:text="In review" />
 
 </RelativeLayout>

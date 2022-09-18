@@ -23,7 +23,9 @@ import uz.gita.firebasesample.presentation.viewmodel.impl.ProductsViewModelImpl
 class ProductsScreen : Fragment(R.layout.screen_products) {
 
     private val adapter: ProductAdapter by lazy { ProductAdapter() }
+
     private val viewModel: ProductsViewModel by viewModels<ProductsViewModelImpl>()
+
     private val viewBinding: ScreenProductsBinding by viewBinding(ScreenProductsBinding::bind)
 
     private val args: ProductsScreenArgs by navArgs()
@@ -31,7 +33,6 @@ class ProductsScreen : Fragment(R.layout.screen_products) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.getProductsByCategoryId(args.category)
-        Log.d("PPP", args.category.toString())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

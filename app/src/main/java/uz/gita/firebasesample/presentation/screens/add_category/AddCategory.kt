@@ -40,7 +40,7 @@ class AddCategory : Fragment(R.layout.screen_add_category) {
 
         viewBinding.btnAddCategory.setOnClickListener {
             if (viewBinding.etNameCategory.text.isNotEmpty() && viewBinding.etTagCategory.text.isNotEmpty()) {
-                val split = viewBinding.etTagCategory.text.split(" ")
+                val split = viewBinding.etTagCategory.text.split("#")
                 viewModel.addCategory(
                     ProductCategoryData(
                         name = viewBinding.etNameCategory.text.toString(),

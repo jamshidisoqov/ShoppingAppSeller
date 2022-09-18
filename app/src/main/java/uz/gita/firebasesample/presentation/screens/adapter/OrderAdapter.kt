@@ -66,7 +66,7 @@ private val itemOrderCallback = object : DiffUtil.ItemCallback<OrdersData>() {
         oldItem.id == newItem.id
 
     override fun areContentsTheSame(oldItem: OrdersData, newItem: OrdersData): Boolean =
-        oldItem.clientId != newItem.clientId && oldItem.details != newItem.details && oldItem.status == newItem.status
+        oldItem.clientId == newItem.clientId && oldItem.details == newItem.details && oldItem.status == newItem.status
 
 
 }
