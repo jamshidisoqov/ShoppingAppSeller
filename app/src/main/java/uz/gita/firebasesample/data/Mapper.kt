@@ -37,7 +37,8 @@ object Mapper {
         categoryId = this["category_id"].toString(),
         photos = this["photos"].toString(),
         cell = this["sell"].toString(),
-        storeId = this["store_id"].toString()
+        storeId = this["store_id"].toString(),
+        attr = this["attr"].toString()
     )
 
 
