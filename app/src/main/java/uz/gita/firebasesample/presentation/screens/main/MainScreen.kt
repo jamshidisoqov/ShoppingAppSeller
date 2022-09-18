@@ -25,7 +25,6 @@ class MainScreen : Fragment(R.layout.screen_main) {
             tab.text = "${list[position]}"
         }.attach()
 
-
     }
 
 }

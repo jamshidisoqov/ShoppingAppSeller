@@ -65,6 +65,7 @@ class AddCategory : Fragment(R.layout.screen_add_category) {
     }
 
     private fun addPictureToCategoryImage() {
+
         val builder = AlertDialog.Builder(requireContext())
         val binding = DialogChoiceBinding.inflate(layoutInflater)
         builder.setView(binding.root)

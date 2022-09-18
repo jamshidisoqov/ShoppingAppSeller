@@ -37,7 +37,6 @@ class ProductsScreen : Fragment(R.layout.screen_products) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
-
         viewModel.productListLiveData.observe(viewLifecycleOwner) {
             if (it.isEmpty()) {
                 viewBinding.emptyPlaceholder.visibility = View.VISIBLE

@@ -1,11 +1,16 @@
 package uz.gita.firebasesample.repository.firebase
 
 import android.net.Uri
+import android.util.Log
+import android.widget.Toast
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.tasks.await
 import uz.gita.firebasesample.data.Mapper.toCategory
 import uz.gita.firebasesample.data.Mapper.toOrder
@@ -17,6 +22,7 @@ import uz.gita.firebasesample.data.models.firebase.ProductEntity
 import uz.gita.firebasesample.data.pref.MySharedPref
 import java.util.*
 import javax.inject.Inject
+
 
 class StoreRepositoryImpl @Inject constructor(
     private val mySharedPref: MySharedPref
@@ -51,7 +57,7 @@ class StoreRepositoryImpl @Inject constructor(
             .map { item ->
                 item.toProduct()
             }.filter { product ->
-                product.categoryId == categoryId && product.storeId == mySharedPref.getStoreId()
+                product.categoryId == categoryId
             }
 
         emit(list)
@@ -86,22 +92,21 @@ class StoreRepositoryImpl @Inject constructor(
 
         val fileName = UUID.randomUUID().toString() + ".jpg"
 
-        var imageUrl = ""
 
+        val deferred = CompletableDeferred<String>()
         val refStorage = FirebaseStorage.getInstance().reference.child("images/$fileName")
 
         refStorage.putFile(uri).addOnSuccessListener { taskSnapshot ->
             taskSnapshot.storage.downloadUrl.addOnSuccessListener {
-                imageUrl = it.toString()
+                val imageUrl = it.toString()
+                Log.d("TTT", "imageUrl=$imageUrl")
+                deferred.complete(imageUrl)
             }
         }
-
             .addOnFailureListener { e ->
-                print(e.message)
+                deferred.completeExceptionally(e)
             }
 
-        return imageUrl
+        return deferred.await()
     }
-
-
 }

@@ -1,11 +1,14 @@
 package uz.gita.firebasesample.presentation.viewmodel.impl
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import uz.gita.firebasesample.data.models.local.ProductCategoryData
 import uz.gita.firebasesample.data.models.local.ProductData
@@ -28,11 +31,10 @@ class ProductsViewModelImpl @Inject constructor(
 
     override fun getProductsByCategoryId(productCategoryData: ProductCategoryData) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getProductsByCategory(productCategoryData).collect {
+            repository.getProductsByCategory(productCategoryData).onEach {
                 productListLiveData.postValue(it)
-            }
+            }.collect()
         }
-
     }
 
     override fun openProductDetailsScreen(productData: ProductData) {

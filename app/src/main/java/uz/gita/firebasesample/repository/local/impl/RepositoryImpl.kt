@@ -1,7 +1,11 @@
 package uz.gita.firebasesample.repository.local.impl
 
 import android.net.Uri
+import android.util.Log
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import uz.gita.firebasesample.data.models.local.OrdersData
 import uz.gita.firebasesample.data.models.local.ProductCategoryData
@@ -31,6 +35,7 @@ class RepositoryImpl @Inject constructor(
             }
         }
 
+
     override suspend fun updateOrders(ordersData: OrdersData) =
         storeRepository.updateOrders(ordersData.toOrderEntity())
 
@@ -52,6 +57,7 @@ class RepositoryImpl @Inject constructor(
         }
 
     override suspend fun uploadImage(uri: Uri): String = storeRepository.uploadImage(uri)
+
     override suspend fun addCategory(productCategoryData: ProductCategoryData) =
         storeRepository.addCategory(productCategoryData.toCategoryEntity())
 }

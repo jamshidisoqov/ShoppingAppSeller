@@ -24,6 +24,6 @@ interface StoreRepository {
 
     fun getAllOrders(): Flow<List<OrderEntity>>
 
-    suspend fun uploadImage(uri: Uri):String
+    suspend fun uploadImage(uri: Uri): String
 
 }
