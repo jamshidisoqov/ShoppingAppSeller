@@ -14,10 +14,11 @@ class MySharedPrefImpl @Inject constructor(@ApplicationContext ctx: Context) : M
     private val editor = sharedPref.edit()
 
     override fun getStoreId(): String =
-        sharedPref.getString(STORE_ID, "rYAIboJmIgwpS98ipyQ").toString()
+        sharedPref.getString(STORE_ID, "").toString()
 
     override fun setStoreId(storeId: String) =
         editor.putString(STORE_ID, storeId).apply()
+
 
     companion object {
         const val SHARED_NAME = "app_data"

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginScreen">
+    app:startDestination="@id/splashScreen">
 
     <fragment
         android:id="@+id/loginScreen"
@@ -80,6 +80,19 @@
         <action
             android:id="@+id/action_productDetailsScreen_to_productsScreen"
             app:destination="@id/productsScreen"
+            app:popUpTo="@id/nav_graph" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="uz.gita.firebasesample.presentation.screens.splash.SplashScreen"
+        android:label="SplashScreen">
+        <action
+            android:id="@+id/action_splashScreen_to_loginScreen"
+            app:destination="@id/loginScreen"
+            app:popUpTo="@id/nav_graph" />
+        <action
+            android:id="@+id/action_splashScreen_to_mainScreen"
+            app:destination="@id/mainScreen"
             app:popUpTo="@id/nav_graph" />
     </fragment>
 </navigation>

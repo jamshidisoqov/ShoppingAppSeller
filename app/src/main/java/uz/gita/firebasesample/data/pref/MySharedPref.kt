@@ -7,4 +7,5 @@ interface MySharedPref {
 
     fun setStoreId(storeId: String)
 
+
 }
