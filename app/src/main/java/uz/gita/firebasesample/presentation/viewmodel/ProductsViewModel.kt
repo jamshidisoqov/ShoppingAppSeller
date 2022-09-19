@@ -9,6 +9,8 @@ interface ProductsViewModel {
 
     val productListLiveData:LiveData<List<ProductData>>
 
+    val progressLiveData:LiveData<Boolean>
+
     fun getProductsByCategoryId(productCategoryData: ProductCategoryData)
 
     fun openProductDetailsScreen(productData: ProductData)

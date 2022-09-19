@@ -1,5 +1,6 @@
 package uz.gita.firebasesample.presentation.viewmodel
 
+import androidx.lifecycle.LiveData
 import kotlinx.coroutines.flow.Flow
 import uz.gita.firebasesample.data.models.local.OrdersData
 
@@ -8,6 +9,7 @@ interface OrdersViewModel {
 
     val allOrders: Flow<List<OrdersData>>
 
+    val progressLiveData: LiveData<Boolean>
 
     fun updateOrder(ordersData: OrdersData)
 

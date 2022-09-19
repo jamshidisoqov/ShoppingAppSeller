@@ -28,10 +28,14 @@ class ProductsViewModelImpl @Inject constructor(
 
     override val productListLiveData = MutableLiveData<List<ProductData>>()
 
+    override val progressLiveData = MutableLiveData<Boolean>()
+
 
     override fun getProductsByCategoryId(productCategoryData: ProductCategoryData) {
+        progressLiveData.value = true
         viewModelScope.launch(Dispatchers.IO) {
             repository.getProductsByCategory(productCategoryData).onEach {
+                progressLiveData.postValue(false)
                 productListLiveData.postValue(it)
             }.collect()
         }

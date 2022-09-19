@@ -39,6 +39,12 @@ class OrdersPage : Fragment(R.layout.page_orders) {
             }
         }
 
+        viewModel.progressLiveData.observe(viewLifecycleOwner){
+            if (it)
+                viewBinding.progressBar.visibility = View.VISIBLE
+            else viewBinding.progressBar.visibility = View.INVISIBLE
+        }
+
     }
 
 }

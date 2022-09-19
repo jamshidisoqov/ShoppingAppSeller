@@ -12,7 +12,10 @@ interface AddProductViewModel {
 
     //    var openImagePickerDialogLiveData: MutableLiveData<Unit>
     val backLiveData: LiveData<Unit>
+
     val messageLiveData: LiveData<String>
+
+    val progressLiveData:LiveData<Boolean>
 
     fun addProduct(productData: ProductData)
 

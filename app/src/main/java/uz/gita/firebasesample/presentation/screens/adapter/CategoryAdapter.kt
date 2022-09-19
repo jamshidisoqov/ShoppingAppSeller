@@ -41,12 +41,6 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.Holder>() {
 
             Picasso.get().load(data[absoluteAdapterPosition].imageUrl).into(image)
 
-//            if (image.) {
-//                image?.visibility = View.GONE
-//            } else {
-//                image?.visibility = View.VISIBLE
-//            }
-
             name.text = data[absoluteAdapterPosition].name
         }
     }

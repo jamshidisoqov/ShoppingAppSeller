@@ -1,5 +1,6 @@
 package uz.gita.firebasesample.presentation.viewmodel.impl
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,10 +20,14 @@ class OrdersViewModelImpl @Inject constructor(
 
     override val allOrders = MutableSharedFlow<List<OrdersData>>()
 
+    override val progressLiveData = MutableLiveData<Boolean>()
+
     init {
         viewModelScope.launch(Dispatchers.IO) {
+            progressLiveData.postValue(true)
             repository.getAllOrders().collectLatest {
                 allOrders.emit(it)
+                progressLiveData.postValue(false)
             }
         }
     }

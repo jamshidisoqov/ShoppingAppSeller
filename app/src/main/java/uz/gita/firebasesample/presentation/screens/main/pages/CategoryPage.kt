@@ -1,6 +1,7 @@
 package uz.gita.firebasesample.presentation.screens.main.pages
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -21,20 +22,24 @@ import uz.gita.firebasesample.presentation.viewmodel.impl.CategoriesViewModelImp
 class CategoryPage : Fragment(R.layout.page_categories) {
 
     private val viewBinding: PageCategoriesBinding by viewBinding(PageCategoriesBinding::bind)
+
     private val viewModel: CategoriesViewModel by viewModels<CategoriesViewModelImpl>()
 
     private val adapter: CategoryAdapter by lazy { CategoryAdapter() }
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel.update()
-    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel.update()
         viewBinding.categoryList.adapter = adapter
 
         viewModel.categoryListLiveData.observe(viewLifecycleOwner) {
+            Log.d("TTT", "onViewCreated:${it.size}")
             adapter.submit(it)
+        }
+
+        viewModel.progressLiveData.observe(viewLifecycleOwner){
+            if (it)
+            viewBinding.progressBar.visibility = View.VISIBLE
+            else viewBinding.progressBar.visibility = View.INVISIBLE
         }
 
         adapter.setOnClickItemListener {
@@ -44,6 +49,8 @@ class CategoryPage : Fragment(R.layout.page_categories) {
         viewBinding.addBtn.setOnClickListener {
             viewModel.openAddCategory()
         }
+
+
     }
 
 }

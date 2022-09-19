@@ -52,6 +52,12 @@ class ProductsScreen : Fragment(R.layout.screen_products) {
             viewModel.openAddProductScreen(args.category)
         }
 
+        viewModel.progressLiveData.observe(viewLifecycleOwner){
+            if (it)
+                viewBinding.progressBar.visibility = View.VISIBLE
+            else viewBinding.progressBar.visibility = View.INVISIBLE
+        }
+
 //        viewBinding.productSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 //            override fun onQueryTextSubmit(query: String?): Boolean {
 //                return true
