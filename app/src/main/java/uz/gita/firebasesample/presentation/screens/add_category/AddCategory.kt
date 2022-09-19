@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.core.graphics.drawable.toIcon
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -76,8 +77,8 @@ class AddCategory : Fragment(R.layout.screen_add_category) {
             }
         } else if (requestCode == 456) {
             if (data?.data != null) {
-                viewBinding.tvImageCategory.setImageURI(data.data)
                 viewModel.uploadImage(data.data!!)
+                viewBinding.tvImageCategory.setImageURI(data.data)
             }
         }
     }

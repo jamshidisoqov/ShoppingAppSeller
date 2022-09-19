@@ -3,49 +3,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/tv_image_category"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:paddingVertical="20dp"
-        android:scaleType="centerCrop"
-        android:layout_marginHorizontal="15dp"
-        android:background="@drawable/black_stroke"
-        app:layout_constraintBottom_toTopOf="@id/et_name_category"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        tools:ignore="ContentDescription" />
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/iv_add_btn"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="@id/tv_image_category"
-        app:layout_constraintEnd_toEndOf="@id/tv_image_category"
-        app:layout_constraintStart_toStartOf="@id/tv_image_category"
-        app:layout_constraintTop_toTopOf="@id/tv_image_category"
         android:src="@drawable/ic_baseline_add_24"
+        app:layout_constraintBottom_toBottomOf="@id/tv_image_category1"
+        app:layout_constraintEnd_toEndOf="@id/tv_image_category1"
+        app:layout_constraintStart_toStartOf="@id/tv_image_category1"
+        app:layout_constraintTop_toTopOf="@id/tv_image_category1"
         tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:id="@+id/tv_image_category1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:background="@drawable/black_stroke"
+        android:padding="5dp"
+        app:layout_constraintBottom_toTopOf="@id/et_name_category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <ImageView
+            android:id="@+id/tv_image_category"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription" />
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/et_name_category"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/black_stroke"
         android:hint="Name"
         android:padding="10dp"
-        android:layout_marginTop="50dp"
         android:textColorHint="#979797"
+        app:layout_constraintBottom_toTopOf="@id/et_tag_category"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/et_tag_category"
-        app:layout_constraintTop_toBottomOf="@id/tv_image_category"
+        app:layout_constraintTop_toBottomOf="@id/tv_image_category1"
         tools:ignore="Autofill,HardcodedText,TextFields" />
 
     <EditText
@@ -53,14 +60,14 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/black_stroke"
         android:hint="#tag"
         android:padding="10dp"
-        android:layout_marginTop="50dp"
         android:textColorHint="#979797"
+        app:layout_constraintBottom_toTopOf="@id/btn_add_category"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btn_add_category"
         app:layout_constraintTop_toBottomOf="@id/et_name_category"
         tools:ignore="Autofill,HardcodedText,TextFields" />
 
@@ -70,14 +77,14 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
         android:layout_marginTop="100dp"
+        android:backgroundTint="#1C9D5F"
+        android:padding="10dp"
         android:text="Add category"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:padding="10dp"
-        app:layout_constraintTop_toBottomOf="@id/et_tag_category"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:backgroundTint="#1C9D5F"
+        app:layout_constraintTop_toBottomOf="@id/et_tag_category"
         tools:ignore="HardcodedText" />
 
     <ProgressBar
