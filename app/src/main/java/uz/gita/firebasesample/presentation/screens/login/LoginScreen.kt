@@ -46,10 +46,8 @@ class LoginScreen : Fragment(R.layout.screen_login) {
             viewModel.progressLiveData.collectLatest {
                 if (it) {
                     viewBinding.progres.visibility = View.VISIBLE
-//                    viewBinding.btnLogin.isInvisible = false
                 } else {
                     viewBinding.progres.visibility = View.GONE
-//                    viewBinding.btnLogin.isInvisible = true
                 }
             }
         }
