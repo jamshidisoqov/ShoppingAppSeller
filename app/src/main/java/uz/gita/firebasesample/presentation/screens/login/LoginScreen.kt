@@ -2,6 +2,7 @@ package uz.gita.firebasesample.presentation.screens.login
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.viewModels
@@ -30,6 +31,7 @@ class LoginScreen : Fragment(R.layout.screen_login) {
                 viewBinding.inputPassword.text.toString()
             )
         }
+
         lifecycleScope.launch {
             viewModel.errorFlow.collectLatest {
                 Snackbar.make(
@@ -37,6 +39,18 @@ class LoginScreen : Fragment(R.layout.screen_login) {
                     "Login or Password incorrect",
                     Snackbar.LENGTH_SHORT
                 ).show()
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.progressLiveData.collectLatest {
+                if (it) {
+                    viewBinding.progres.visibility = View.VISIBLE
+//                    viewBinding.btnLogin.isInvisible = false
+                } else {
+                    viewBinding.progres.visibility = View.GONE
+//                    viewBinding.btnLogin.isInvisible = true
+                }
             }
         }
     }

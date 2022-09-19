@@ -38,7 +38,15 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.Holder>() {
         fun onBind() {
             val image = itemView.findViewById<ImageView>(R.id.image_category)
             val name = itemView.findViewById<TextView>(R.id.category_name)
+
             Picasso.get().load(data[absoluteAdapterPosition].imageUrl).into(image)
+
+//            if (image.) {
+//                image?.visibility = View.GONE
+//            } else {
+//                image?.visibility = View.VISIBLE
+//            }
+
             name.text = data[absoluteAdapterPosition].name
         }
     }

@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 interface LoginViewModel {
 
     val errorFlow: Flow<Unit>
-
+    val progressLiveData: Flow<Boolean>
     fun login(login: String, password: String)
 
 }

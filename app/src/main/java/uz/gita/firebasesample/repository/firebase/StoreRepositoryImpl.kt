@@ -65,7 +65,7 @@ class StoreRepositoryImpl @Inject constructor(
     }
 
     override suspend fun updateOrders(orderEntity: OrderEntity) {
-        db.collection("orders").document(orderEntity.id).set(orderEntity)
+        db.collection("orders").document(orderEntity.id).update("status", orderEntity.status)
     }
 
     override suspend fun addCategory(categoryEntity: CategoryEntity) {

@@ -45,7 +45,6 @@ class ProductsScreen : Fragment(R.layout.screen_products) {
 
         viewBinding.productList.adapter = adapter
 
-
         adapter.setItemOnClickListener {
             viewModel.openProductDetailsScreen(it)
         }
