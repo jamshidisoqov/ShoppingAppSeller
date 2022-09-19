@@ -10,7 +10,6 @@
         android:id="@+id/tv_image_category"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:paddingHorizontal="5dp"
         android:paddingVertical="20dp"
         android:scaleType="centerCrop"
         android:layout_marginHorizontal="15dp"
