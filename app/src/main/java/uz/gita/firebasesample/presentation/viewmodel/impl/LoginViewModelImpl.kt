@@ -20,6 +20,7 @@ class LoginViewModelImpl @Inject constructor(
 ) : LoginViewModel, ViewModel() {
 
     override val errorFlow = MutableSharedFlow<Unit>()
+
     override val progressLiveData = MutableStateFlow<Boolean>(false)
 
     override fun login(login: String, password: String) {

@@ -26,12 +26,12 @@ class OrderAdapter : ListAdapter<OrdersData, OrderAdapter.ViewHolder>(itemOrderC
         init {
             binding.tvOrderStatus.setOnClickListener {
                 val data = getItem(absoluteAdapterPosition)
-                if (data.status == "In Review") {
-                    binding.tvOrderStatus.text = "Approved"
-                    updateListener?.invoke(data.copy(status = "Approved"))
+                if (data.status == "In review") {
+                    binding.tvOrderStatus.text = "Accepted"
+                    updateListener?.invoke(data.copy(status = "Accepted"))
                 } else {
-                    binding.tvOrderStatus.text = "In Review"
-                    updateListener?.invoke(data.copy(status = "In Review"))
+                    binding.tvOrderStatus.text = "In review"
+                    updateListener?.invoke(data.copy(status = "In review"))
                 }
             }
         }

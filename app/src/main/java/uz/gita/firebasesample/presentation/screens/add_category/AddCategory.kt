@@ -50,6 +50,12 @@ class AddCategory : Fragment(R.layout.screen_add_category) {
                 )
             }
         }
+
+        viewModel.progressLiveData.observe(viewLifecycleOwner){
+            if (it)
+                viewBinding.progressBar.visibility = View.VISIBLE
+            else viewBinding.progressBar.visibility = View.INVISIBLE
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

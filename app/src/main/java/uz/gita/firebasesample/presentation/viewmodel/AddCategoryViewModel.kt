@@ -9,6 +9,8 @@ interface AddCategoryViewModel {
 
     val closeScreenLiveData: LiveData<Unit>
 
+    val progressLiveData:LiveData<Boolean>
+
     fun uploadImage(uri: Uri)
 
     fun addCategory(productCategoryData: ProductCategoryData)

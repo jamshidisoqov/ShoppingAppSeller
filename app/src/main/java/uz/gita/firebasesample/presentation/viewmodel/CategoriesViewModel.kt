@@ -9,6 +9,8 @@ interface CategoriesViewModel {
 
     val categoryListLiveData: LiveData<List<ProductCategoryData>>
 
+    val progressLiveData:LiveData<Boolean>
+
     fun openAddCategory()
 
     fun update()

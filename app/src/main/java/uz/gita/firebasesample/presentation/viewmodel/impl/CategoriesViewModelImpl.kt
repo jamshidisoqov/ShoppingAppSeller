@@ -24,6 +24,8 @@ class CategoriesViewModelImpl @Inject constructor(
 
     override val categoryListLiveData = MutableLiveData<List<ProductCategoryData>>()
 
+    override val progressLiveData = MutableLiveData<Boolean>()
+
     override fun openAddCategory() {
         viewModelScope.launch {
             navigator.navigateTo(MainScreenDirections.actionMainScreenToAddCategory())
@@ -41,9 +43,11 @@ class CategoriesViewModelImpl @Inject constructor(
     }
 
     override fun update() {
+        progressLiveData.value = true
         viewModelScope.launch(Dispatchers.IO) {
             repository.getCategories().collect {
                 categoryListLiveData.postValue(it)
+                progressLiveData.postValue(false)
             }
         }
     }

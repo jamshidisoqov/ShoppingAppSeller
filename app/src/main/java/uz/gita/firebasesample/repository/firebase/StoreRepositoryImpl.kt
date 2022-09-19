@@ -2,15 +2,13 @@ package uz.gita.firebasesample.repository.firebase
 
 import android.net.Uri
 import android.util.Log
-import android.widget.Toast
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 import uz.gita.firebasesample.data.Mapper.toCategory
 import uz.gita.firebasesample.data.Mapper.toOrder
@@ -44,25 +42,32 @@ class StoreRepositoryImpl @Inject constructor(
         return false
     }
 
-    override fun getCategories(): Flow<List<CategoryEntity>> = flow {
-
-        val list = db.collection("categories").get().await().documents
-            .map {
+    override fun getCategories(): Flow<List<CategoryEntity>> = callbackFlow {
+        val subscriber = db.collection("categories").addSnapshotListener { value, error ->
+            val list = value?.documents?.map {
                 it.toCategory()
             }
-        emit(list)
+            trySend(list ?: emptyList())
+        }
+        awaitClose {
+            subscriber.remove()
+        }
     }
 
-    override fun getProductsByCategory(categoryId: String): Flow<List<ProductEntity>> = flow {
-        val list = db.collection("product").get().await().documents
-            .map { item ->
-                item.toProduct()
-            }.filter { product ->
-                product.categoryId == categoryId
+    override fun getProductsByCategory(categoryId: String): Flow<List<ProductEntity>> =
+        callbackFlow {
+            val list = db.collection("product").addSnapshotListener { value, error ->
+                val data = value?.documents?.map { item ->
+                    item.toProduct()
+                }?.filter { product ->
+                    product.categoryId == categoryId
+                }
+                trySend(data ?: emptyList())
             }
-
-        emit(list)
-    }
+            awaitClose {
+                list.remove()
+            }
+        }
 
     override suspend fun updateOrders(orderEntity: OrderEntity) {
         db.collection("orders").document(orderEntity.id).update("status", orderEntity.status)
@@ -77,16 +82,18 @@ class StoreRepositoryImpl @Inject constructor(
     }
 
 
-    override fun getAllOrders(): Flow<List<OrderEntity>> = flow {
-        val list = db.collection("orders")
-            .get()
-            .await()
-            .documents
-            .map { item ->
+    override fun getAllOrders(): Flow<List<OrderEntity>> = callbackFlow {
+        val list = db.collection("orders").addSnapshotListener { value, error ->
+            val data = value?.documents?.map { item ->
                 item.toOrder()
             }
+            trySend(data ?: emptyList())
 
-        emit(list)
+        }
+        awaitClose {
+            list.remove()
+        }
+
     }
 
     override suspend fun uploadImage(uri: Uri): String {

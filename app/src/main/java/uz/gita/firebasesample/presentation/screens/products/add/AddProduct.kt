@@ -64,6 +64,12 @@ class AddProduct : Fragment(R.layout.screen_add_product) {
             )
         }
 
+        viewModel.progressLiveData.observe(viewLifecycleOwner){
+            if (it)
+                binding.progressBar.visibility = View.VISIBLE
+            else binding.progressBar.visibility = View.INVISIBLE
+        }
+
         binding.addBtn.setOnClickListener {
             addAttr()
         }
