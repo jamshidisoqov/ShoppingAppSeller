@@ -25,27 +25,25 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/image1"
             android:layout_width="@dimen/_280sdp"
             android:layout_height="@dimen/_150sdp"
             android:layout_marginTop="@dimen/_20sdp"
-            android:alpha="0.4"
-            android:translationZ="@dimen/_50sdp"
             android:background="@drawable/back_style_back"
-            android:padding="@dimen/_15sdp"
+            android:padding="@dimen/_65sdp"
+            android:src="@drawable/ic_add_svgrepo_com"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title" />
 
         <ImageView
-            android:id="@+id/image1"
+            android:id="@+id/image"
             android:layout_width="@dimen/_280sdp"
             android:layout_height="@dimen/_150sdp"
             android:layout_marginTop="@dimen/_20sdp"
-            android:alpha="0.4"
+            android:scaleType="centerCrop"
             android:background="@drawable/back_style_back"
-            android:padding="@dimen/_60sdp"
-            android:src="@drawable/ic_add_svgrepo_com"
+            android:padding="@dimen/_15sdp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title" />
