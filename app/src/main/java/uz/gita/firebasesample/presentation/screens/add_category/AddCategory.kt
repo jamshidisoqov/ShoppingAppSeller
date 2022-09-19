@@ -100,7 +100,6 @@ class AddCategory : Fragment(R.layout.screen_add_category) {
         val builder = AlertDialog.Builder(requireContext())
         val binding = DialogChoiceBinding.inflate(layoutInflater)
         builder.setView(binding.root)
-        builder.setCancelable(false)
         val alertDialog = builder.create()
         alertDialog.window!!.setBackgroundDrawable(
             ColorDrawable(
