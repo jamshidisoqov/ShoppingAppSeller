@@ -50,6 +50,7 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.Holder>() {
                     override fun onSuccess() {
                         progress.visibility = View.GONE
                     }
+
                     override fun onError(e: Exception?) {}
                 })
 

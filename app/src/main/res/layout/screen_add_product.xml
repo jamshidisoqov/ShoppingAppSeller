@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -44,12 +44,12 @@
             android:layout_marginTop="@dimen/_50sdp"
             android:background="@drawable/back_style_back"
             android:hint="@string/name"
+            android:textColorHint="#979797"
             android:maxLines="1"
             android:padding="@dimen/_10sdp"
             app:layout_constraintLeft_toLeftOf="@id/image"
             app:layout_constraintRight_toRightOf="@id/image"
             app:layout_constraintTop_toBottomOf="@id/image" />
-
 
         <EditText
             android:id="@+id/et_price"
@@ -58,9 +58,10 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:background="@drawable/back_style_back"
             android:hint="@string/bahosi"
+            android:textColorHint="#979797"
+            android:inputType="number"
             android:maxLines="1"
             android:padding="@dimen/_10sdp"
-            android:inputType="number"
             app:layout_constraintLeft_toLeftOf="@id/image"
             app:layout_constraintRight_toRightOf="@id/image"
             app:layout_constraintTop_toBottomOf="@id/et_name" />
@@ -72,8 +73,9 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:background="@drawable/back_style_back"
             android:gravity="top"
-            android:maxLines="5"
+            android:textColorHint="#979797"
             android:hint="@string/description"
+            android:maxLines="5"
             android:padding="@dimen/_10sdp"
             app:layout_constraintLeft_toLeftOf="@id/image"
             app:layout_constraintRight_toRightOf="@id/image"
@@ -110,7 +112,7 @@
             android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginEnd="108dp"
             android:layout_marginBottom="16dp"
-            android:background="@color/white"
+            android:backgroundTint="#1C9D5F"
             android:src="@drawable/ic_baseline_add_24"
             app:layout_constraintBottom_toTopOf="@id/add"
             app:layout_constraintHorizontal_bias="1"
@@ -118,6 +120,7 @@
             app:layout_constraintRight_toRightOf="@id/rv"
             app:layout_constraintTop_toBottomOf="@id/rv"
             app:layout_constraintVertical_bias="1"
+            app:tint="@color/white"
             tools:ignore="ContentDescription" />
 
         <androidx.appcompat.widget.AppCompatButton
