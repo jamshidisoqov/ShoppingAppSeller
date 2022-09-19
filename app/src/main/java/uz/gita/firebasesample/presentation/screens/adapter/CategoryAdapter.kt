@@ -71,4 +71,5 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.Holder>() {
     override fun getItemCount(): Int {
         return data.size
     }
+
 }

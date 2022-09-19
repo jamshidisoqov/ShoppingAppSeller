@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -69,6 +70,10 @@ class AddProduct : Fragment(R.layout.screen_add_product) {
             if (it)
                 binding.progressBar.visibility = View.VISIBLE
             else binding.progressBar.visibility = View.INVISIBLE
+        }
+
+        viewModel.backLiveData.observe(this) {
+            findNavController().popBackStack()
         }
 
         binding.addBtn.setOnClickListener {
