@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="#f8f8f8">
 
-
     <ImageView
         android:id="@+id/image_shop"
         android:layout_width="0dp"
@@ -22,7 +21,6 @@
         tools:ignore="ContentDescription" />
 
     <ProgressBar
-
         android:id="@+id/progres"
         app:layout_constraintTop_toBottomOf="@id/image_shop"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -31,7 +29,6 @@
         android:layout_width="wrap_content"
         android:visibility="gone"
         android:layout_height="wrap_content"/>
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_login"
@@ -53,8 +50,8 @@
             android:importantForAutofill="no"
             android:inputType="text"
             tools:ignore="LabelFor" />
-    </com.google.android.material.textfield.TextInputLayout>
 
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_password"
@@ -75,8 +72,8 @@
             android:importantForAutofill="no"
             android:inputType="text"
             tools:ignore="LabelFor,TextFields" />
-    </com.google.android.material.textfield.TextInputLayout>
 
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_login"
@@ -91,6 +88,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_percent="0.86" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
