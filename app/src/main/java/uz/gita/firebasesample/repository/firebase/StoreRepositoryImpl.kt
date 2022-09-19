@@ -45,6 +45,7 @@ class StoreRepositoryImpl @Inject constructor(
     }
 
     override fun getCategories(): Flow<List<CategoryEntity>> = flow {
+
         val list = db.collection("categories").get().await().documents
             .map {
                 it.toCategory()

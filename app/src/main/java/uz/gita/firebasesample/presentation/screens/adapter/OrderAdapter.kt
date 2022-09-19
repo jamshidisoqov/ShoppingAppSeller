@@ -2,6 +2,7 @@ package uz.gita.firebasesample.presentation.screens.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.text.isDigitsOnly
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -26,9 +27,9 @@ class OrderAdapter : ListAdapter<OrdersData, OrderAdapter.ViewHolder>(itemOrderC
         init {
             binding.tvOrderStatus.setOnClickListener {
                 val data = getItem(absoluteAdapterPosition)
-                if (data.status == "In Review") {
-                    binding.tvOrderStatus.text = "Approved"
-                    updateListener?.invoke(data.copy(status = "Approved"))
+                if (data.status == "In review") {
+                    binding.tvOrderStatus.text = "Accepted"
+                    updateListener?.invoke(data.copy(status = "Accepted"))
                 }
             }
         }
@@ -54,6 +55,7 @@ class OrderAdapter : ListAdapter<OrdersData, OrderAdapter.ViewHolder>(itemOrderC
     private fun calculateSumm(list: List<Order>): Int {
         var summ = 0
         list.forEach {
+            if (it.sell.isDigitsOnly())
             summ += it.sell.toInt() * it.count
         }
         return summ

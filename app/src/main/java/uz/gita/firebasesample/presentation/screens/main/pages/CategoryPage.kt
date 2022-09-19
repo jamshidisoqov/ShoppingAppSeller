@@ -21,15 +21,11 @@ import uz.gita.firebasesample.presentation.viewmodel.impl.CategoriesViewModelImp
 class CategoryPage : Fragment(R.layout.page_categories) {
 
     private val viewBinding: PageCategoriesBinding by viewBinding(PageCategoriesBinding::bind)
+
     private val viewModel: CategoriesViewModel by viewModels<CategoriesViewModelImpl>()
 
     private val adapter: CategoryAdapter by lazy { CategoryAdapter() }
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel.update()
-    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewBinding.categoryList.adapter = adapter
 
@@ -44,6 +40,8 @@ class CategoryPage : Fragment(R.layout.page_categories) {
         viewBinding.addBtn.setOnClickListener {
             viewModel.openAddCategory()
         }
+
+
     }
 
 }

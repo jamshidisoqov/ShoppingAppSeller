@@ -25,7 +25,7 @@ object Mapper {
 
     fun DocumentSnapshot.toOrder() = OrderEntity(
         id = this["id"].toString(),
-        clientId = this["client_id"].toString(),
+        clientId = this["clientId"].toString(),
         details = this["details"].toString(),
         status = this["status"].toString()
     )
@@ -36,7 +36,7 @@ object Mapper {
         desc = this["description"].toString(),
         categoryId = this["categoryId"].toString(),
         photos = this["photos"].toString(),
-        cell = this["sell"].toString(),
+        cell = this["cell"].toString(),
         storeId = this["storeId"].toString(),
         attr = this["attr"].toString()
     )
