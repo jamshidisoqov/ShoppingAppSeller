@@ -12,7 +12,8 @@
         tools:layout="@layout/screen_login">
         <action
             android:id="@+id/action_loginScreen_to_mainScreen"
-            app:destination="@id/mainScreen" />
+            app:destination="@id/mainScreen"
+            app:popUpTo="@id/nav_graph" />
 
 
     </fragment>

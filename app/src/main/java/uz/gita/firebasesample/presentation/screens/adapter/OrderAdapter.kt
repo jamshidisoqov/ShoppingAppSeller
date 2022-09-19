@@ -29,6 +29,9 @@ class OrderAdapter : ListAdapter<OrdersData, OrderAdapter.ViewHolder>(itemOrderC
                 if (data.status == "In Review") {
                     binding.tvOrderStatus.text = "Approved"
                     updateListener?.invoke(data.copy(status = "Approved"))
+                } else {
+                    binding.tvOrderStatus.text = "In Review"
+                    updateListener?.invoke(data.copy(status = "In Review"))
                 }
             }
         }
