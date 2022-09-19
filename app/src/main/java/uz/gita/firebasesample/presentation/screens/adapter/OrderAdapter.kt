@@ -1,5 +1,6 @@
 package uz.gita.firebasesample.presentation.screens.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -28,9 +29,11 @@ class OrderAdapter : ListAdapter<OrdersData, OrderAdapter.ViewHolder>(itemOrderC
                 val data = getItem(absoluteAdapterPosition)
                 if (data.status == "In review") {
                     binding.tvOrderStatus.text = "Accepted"
+                    binding.tvOrderStatus.setTextColor(Color.RED)
                     updateListener?.invoke(data.copy(status = "Accepted"))
                 } else {
                     binding.tvOrderStatus.text = "In review"
+                    binding.tvOrderStatus.setTextColor(Color.GREEN)
                     updateListener?.invoke(data.copy(status = "In review"))
                 }
             }
@@ -41,6 +44,11 @@ class OrderAdapter : ListAdapter<OrdersData, OrderAdapter.ViewHolder>(itemOrderC
             binding.apply {
                 tvUserName.text = "Zakaz${absoluteAdapterPosition + 1}"
                 tvOrderStatus.text = data.status
+                if (data.status == "In review") {
+                    binding.tvOrderStatus.setTextColor(Color.RED)
+                } else {
+                    binding.tvOrderStatus.setTextColor(Color.GREEN)
+                }
                 tvOrder.text = "Total amount:${calculateSumm(data.details)}"
             }
         }

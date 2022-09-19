@@ -84,16 +84,12 @@ class StoreRepositoryImpl @Inject constructor(
 
     override fun getAllOrders(): Flow<List<OrderEntity>> = callbackFlow {
         val list = db.collection("orders").addSnapshotListener { value, error ->
-            val data = value?.documents?.map { item ->
-                item.toOrder()
-            }
+            val data = value?.map { it.toOrder() }
             trySend(data ?: emptyList())
-
         }
         awaitClose {
             list.remove()
         }
-
     }
 
     override suspend fun uploadImage(uri: Uri): String {

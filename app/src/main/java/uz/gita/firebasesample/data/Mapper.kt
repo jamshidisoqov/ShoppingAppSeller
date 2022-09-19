@@ -16,6 +16,7 @@ object Mapper {
         password = this["password"].toString(),
     )
 
+
     fun DocumentSnapshot.toCategory() = CategoryEntity(
         id = this["id"].toString(),
         image = this["image"].toString(),
