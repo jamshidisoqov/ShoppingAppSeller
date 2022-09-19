@@ -1,12 +1,13 @@
 package uz.gita.firebasesample.presentation.screens.add_category
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -20,6 +21,9 @@ import uz.gita.firebasesample.databinding.DialogChoiceBinding
 import uz.gita.firebasesample.databinding.ScreenAddCategoryBinding
 import uz.gita.firebasesample.presentation.viewmodel.AddCategoryViewModel
 import uz.gita.firebasesample.presentation.viewmodel.impl.AddCategoryViewModelImpl
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
 
 // Created by Jamshid Isoqov an 9/18/2022
 
@@ -55,8 +59,7 @@ class AddCategory : Fragment(R.layout.screen_add_category) {
         }
 
         viewModel.progressLiveData.observe(viewLifecycleOwner) {
-            if (it)
-                viewBinding.progressBar.visibility = View.VISIBLE
+            if (it) viewBinding.progressBar.visibility = View.VISIBLE
             else viewBinding.progressBar.visibility = View.INVISIBLE
         }
     }
@@ -65,13 +68,31 @@ class AddCategory : Fragment(R.layout.screen_add_category) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == 123) {
-            viewModel.uploadImage(data?.data!!)
-            val bmp = data.extras?.get("data") as Bitmap
-            viewBinding.tvImageCategory.setImageBitmap(bmp)
+            val bmp = data?.extras?.get("data") as Bitmap?
+
+            if (bmp != null) {
+                viewModel.uploadImage(getImageUri(requireContext(), bmp))
+                viewBinding.tvImageCategory.setImageBitmap(bmp)
+            }
         } else if (requestCode == 456) {
-            viewBinding.tvImageCategory.setImageURI(data?.data)
-            viewModel.uploadImage(data?.data!!)
+            if (data?.data != null) {
+                viewBinding.tvImageCategory.setImageURI(data.data)
+                viewModel.uploadImage(data.data!!)
+            }
         }
+    }
+    private fun getImageUri(inContext: Context?, inImage: Bitmap): Uri {
+
+        val tempFile = File.createTempFile("temprentpk", ".png")
+        val bytes = ByteArrayOutputStream()
+        inImage.compress(Bitmap.CompressFormat.PNG, 100, bytes)
+        val bitmapData = bytes.toByteArray()
+
+        val fileOutPut = FileOutputStream(tempFile)
+        fileOutPut.write(bitmapData)
+        fileOutPut.flush()
+        fileOutPut.close()
+        return Uri.fromFile(tempFile)
     }
 
     private fun addPictureToCategoryImage() {
