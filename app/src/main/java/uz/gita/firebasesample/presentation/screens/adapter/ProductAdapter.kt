@@ -1,18 +1,27 @@
-package uz.gita.client.adapters
+package uz.gita.firebasesample.presentation.screens.adapter
 
-import android.media.Image
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.google.android.material.card.MaterialCardView
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 import uz.gita.firebasesample.R
 import uz.gita.firebasesample.data.models.local.ProductData
+import java.lang.Exception
 
 class ProductAdapter : ListAdapter<ProductData, ProductAdapter.Holder>(Callback) {
 
@@ -31,15 +40,14 @@ class ProductAdapter : ListAdapter<ProductData, ProductAdapter.Holder>(Callback)
             return oldItem.id == newItem.id && oldItem.description == newItem.description && oldItem.categoryId == newItem.categoryId
                     && oldItem.name == newItem.name && oldItem.attrs == newItem.attrs
         }
-
     }
 
     inner class Holder(view: View) : RecyclerView.ViewHolder(view) {
-
-        val productName: TextView = view.findViewById(R.id.product_name)
-        val card: MaterialCardView = view.findViewById(R.id.card)
-        val productPrice: TextView = view.findViewById(R.id.product_price)
-        val productPhoto: ImageView = view.findViewById(R.id.product_image)
+        private val productName: TextView = view.findViewById(R.id.product_name)
+        private val card: MaterialCardView = view.findViewById(R.id.card)
+        private val productPrice: TextView = view.findViewById(R.id.product_price)
+        private val productPhoto: ImageView = view.findViewById(R.id.product_image)
+        private val progressBar: ProgressBar = view.findViewById(R.id.progress_barrrr)
 
         init {
             card.setOnClickListener {
@@ -48,19 +56,22 @@ class ProductAdapter : ListAdapter<ProductData, ProductAdapter.Holder>(Callback)
         }
 
         fun bind(position: Int) {
-
             val item = getItem(position)
 
             productName.text = item.name
             productPrice.text = item.sell
 
-            Glide
-                .with(itemView)
+            Picasso
+                .get()
                 .load(item.photos)
-                .placeholder(R.drawable.logo)
-                .into(productPhoto)
-        }
+                .into(productPhoto, object : com.squareup.picasso.Callback {
+                    override fun onSuccess() {
+                        progressBar.visibility = View.GONE
+                    }
 
+                    override fun onError(e: Exception?) {}
+                })
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
