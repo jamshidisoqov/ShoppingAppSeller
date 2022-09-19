@@ -8,47 +8,51 @@
 
     <ImageView
         android:id="@+id/image_shop"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginHorizontal="100dp"
         android:src="@drawable/shop"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/til_login"
         app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintVertical_bias="0.2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1"
-        app:layout_constraintWidth_percent="0.5"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:ignore="ContentDescription" />
 
     <ProgressBar
         android:id="@+id/progres"
-        app:layout_constraintTop_toBottomOf="@id/image_shop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_width="wrap_content"
-        android:visibility="gone"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintTop_toBottomOf="@id/image_shop" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_login"
         style="@style/CustomTextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="50dp"
         android:hint="@string/login"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColorHint="#979797"
+        app:boxStrokeColor="#1C9D5F"
+        app:layout_constraintBottom_toTopOf="@id/til_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image_shop"
-        app:layout_constraintVertical_bias="0.3"
-        app:layout_constraintWidth_percent="0.86">
+        app:layout_constraintTop_toBottomOf="@id/image_shop">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:importantForAutofill="no"
             android:inputType="text"
+            android:textColor="@color/black"
             tools:ignore="LabelFor" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -58,19 +62,23 @@
         style="@style/CustomTextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="20dp"
         android:hint="@string/password"
+        android:textColorHint="#979797"
+        app:boxStrokeColor="#1C9D5F"
+        app:layout_constraintBottom_toTopOf="@id/btn_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_login"
-        app:layout_constraintWidth_percent="0.86">
+        app:layout_constraintTop_toBottomOf="@id/til_login">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:importantForAutofill="no"
             android:inputType="text"
+            android:textColor="@color/black"
             tools:ignore="LabelFor,TextFields" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -79,14 +87,14 @@
         android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:text="@string/login"
         android:background="@drawable/bg_btn_screen"
+        android:text="@string/login"
+        android:textAllCaps="false"
+        android:layout_marginBottom="30dp"
+        android:layout_marginHorizontal="30dp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.86" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

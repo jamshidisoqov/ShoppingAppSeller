@@ -37,7 +37,10 @@ class AddCategory : Fragment(R.layout.screen_add_category) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        addPictureToCategoryImage()
+
+        viewBinding.ivAddBtn.setOnClickListener {
+            addPictureToCategoryImage()
+        }
 
         viewBinding.btnAddCategory.setOnClickListener {
             if (viewBinding.etNameCategory.text.isNotEmpty() && viewBinding.etTagCategory.text.isNotEmpty()) {
@@ -51,7 +54,7 @@ class AddCategory : Fragment(R.layout.screen_add_category) {
             }
         }
 
-        viewModel.progressLiveData.observe(viewLifecycleOwner){
+        viewModel.progressLiveData.observe(viewLifecycleOwner) {
             if (it)
                 viewBinding.progressBar.visibility = View.VISIBLE
             else viewBinding.progressBar.visibility = View.INVISIBLE
@@ -72,7 +75,6 @@ class AddCategory : Fragment(R.layout.screen_add_category) {
     }
 
     private fun addPictureToCategoryImage() {
-
         val builder = AlertDialog.Builder(requireContext())
         val binding = DialogChoiceBinding.inflate(layoutInflater)
         builder.setView(binding.root)
