@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -10,7 +11,6 @@
         android:layout_height="wrap_content">
 
         <TextView
-
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,8 +30,9 @@
             android:layout_width="@dimen/_280sdp"
             android:layout_height="@dimen/_150sdp"
             android:layout_marginTop="@dimen/_20sdp"
+            android:alpha="0.4"
             android:background="@drawable/back_style_back"
-            android:padding="@dimen/_6sdp"
+            android:padding="@dimen/_15sdp"
             android:src="@drawable/ic_add_svgrepo_com"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -46,7 +47,6 @@
             android:layout_marginTop="@dimen/_50sdp"
             android:background="@drawable/back_style_back"
             android:hint="@string/name"
-            android:inputType="text"
             android:padding="@dimen/_10sdp"
             app:layout_constraintLeft_toLeftOf="@id/image"
             app:layout_constraintRight_toRightOf="@id/image"
@@ -61,8 +61,8 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:background="@drawable/back_style_back"
             android:hint="@string/bahosi"
-            android:inputType="number"
             android:padding="@dimen/_10sdp"
+            android:inputType="number"
             app:layout_constraintLeft_toLeftOf="@id/image"
             app:layout_constraintRight_toRightOf="@id/image"
             app:layout_constraintTop_toBottomOf="@id/et_name" />
@@ -76,7 +76,6 @@
             android:background="@drawable/back_style_back"
             android:gravity="top"
             android:hint="@string/description"
-            android:inputType="text"
             android:padding="@dimen/_10sdp"
             app:layout_constraintLeft_toLeftOf="@id/image"
             app:layout_constraintRight_toRightOf="@id/image"

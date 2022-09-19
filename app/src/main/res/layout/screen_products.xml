@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#E8E8E8"
     android:layout_height="match_parent">
 
     <View
         android:id="@+id/action_bar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="#039BE5"
+        android:background="#1C9D5F"
         app:layout_constraintBottom_toTopOf="@+id/product_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,6 +23,7 @@
         android:layout_marginStart="6dp"
         android:backgroundTint="#00000000"
         android:padding="10dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/action_bar"
         app:layout_constraintEnd_toStartOf="@+id/product_search"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -33,13 +35,15 @@
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginHorizontal="10dp"
-        android:background="#fff"
+        android:background="@drawable/black_stroke"
+        app:iconifiedByDefault="false"
         app:layout_constraintBottom_toBottomOf="@+id/action_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/back_from_product"
         app:layout_constraintTop_toTopOf="@+id/action_bar"
-        app:layout_constraintVertical_bias="0.375" />
-
+        app:layout_constraintVertical_bias="0.375"
+        app:queryBackground="@null"
+        app:queryHint="Type a word" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/product_list"
@@ -53,16 +57,17 @@
         app:spanCount="2"
         tools:listitem="@layout/item_product" />
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:backgroundTint="#1C9D5F"
         android:src="@drawable/ic_baseline_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
+        app:layout_constraintRight_toRightOf="parent"
+        app:tint="@color/white"
+        tools:ignore="ContentDescription" />
 
     <LinearLayout
         android:id="@+id/emptyPlaceholder"
@@ -74,13 +79,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="@drawable/ic_baseline_search_24"
-            app:tint="#AAAAAA" />
+            app:tint="#AAAAAA"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -88,7 +95,9 @@
             android:layout_marginTop="8dp"
             android:text="No Such Word Found"
             android:textColor="#AAAAAA"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            tools:ignore="HardcodedText" />
+
     </LinearLayout>
 
     <ProgressBar
@@ -100,6 +109,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
