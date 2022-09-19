@@ -3,12 +3,16 @@ package uz.gita.firebasesample.presentation.screens.products
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import uz.gita.firebasesample.presentation.screens.adapter.ProductAdapter
 import uz.gita.firebasesample.R
 import uz.gita.firebasesample.data.models.local.ProductCategoryData
