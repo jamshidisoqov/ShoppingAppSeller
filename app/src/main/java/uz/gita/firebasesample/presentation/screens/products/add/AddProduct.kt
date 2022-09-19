@@ -8,7 +8,6 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
@@ -27,7 +26,9 @@ import uz.gita.firebasesample.databinding.ScreenAddProductBinding
 import uz.gita.firebasesample.presentation.screens.adapter.AttrAdapter
 import uz.gita.firebasesample.presentation.viewmodel.AddProductViewModel
 import uz.gita.firebasesample.presentation.viewmodel.impl.AddProductViewModelImpl
-import kotlin.collections.ArrayList
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
 
 
 // Created by Jamshid Isoqov an 9/18/2022
@@ -37,7 +38,7 @@ class AddProduct : Fragment(R.layout.screen_add_product) {
 
     private val binding: ScreenAddProductBinding by viewBinding(ScreenAddProductBinding::bind)
     private val viewModel: AddProductViewModel by viewModels<AddProductViewModelImpl>()
-    private lateinit var uri: Uri
+    private var uri: Uri? = null
     private lateinit var url: String
     private val adapter: AttrAdapter by lazy { AttrAdapter() }
     private val attrList = ArrayList<Pair<String, String>>()
@@ -64,7 +65,7 @@ class AddProduct : Fragment(R.layout.screen_add_product) {
             )
         }
 
-        viewModel.progressLiveData.observe(viewLifecycleOwner){
+        viewModel.progressLiveData.observe(viewLifecycleOwner) {
             if (it)
                 binding.progressBar.visibility = View.VISIBLE
             else binding.progressBar.visibility = View.INVISIBLE
@@ -132,15 +133,38 @@ class AddProduct : Fragment(R.layout.screen_add_product) {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+
         if (requestCode == 123) {
-            var bmp = data?.extras?.get("data") as Bitmap
+            val bmp = data?.extras?.get("data") as? Bitmap?
             binding.image.setImageBitmap(bmp)
-            viewModel.loadImage(uri)
+            if (bmp != null) {
+                viewModel.loadImage(getImageUri(requireContext(), bmp)!!)
+            } else {
+                Toast.makeText(requireContext(), "Rasm tanlanmadi", Toast.LENGTH_SHORT).show()
+            }
         } else if (requestCode == 456) {
             binding.image.setImageURI(data?.data)
-            uri = data?.data!!
-            viewModel.loadImage(uri)
-        }
+            uri = data?.data
+            if (uri != null) {
+                viewModel.loadImage(uri!!)
+            } else {
+                Toast.makeText(requireContext(), "Rasm tanlanmadi", Toast.LENGTH_SHORT).show()
+            }
 
+        }
+    }
+
+    private fun getImageUri(inContext: Context?, inImage: Bitmap): Uri {
+
+        val tempFile = File.createTempFile("temprentpk", ".png")
+        val bytes = ByteArrayOutputStream()
+        inImage.compress(Bitmap.CompressFormat.PNG, 100, bytes)
+        val bitmapData = bytes.toByteArray()
+
+        val fileOutPut = FileOutputStream(tempFile)
+        fileOutPut.write(bitmapData)
+        fileOutPut.flush()
+        fileOutPut.close()
+        return Uri.fromFile(tempFile)
     }
 }
