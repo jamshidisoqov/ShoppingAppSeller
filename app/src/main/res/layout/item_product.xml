@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="190dp"
     android:background="#F8F8F8">
@@ -30,7 +31,8 @@
         app:layout_constraintStart_toStartOf="@+id/card"
         app:layout_constraintTop_toTopOf="@+id/card"
         app:layout_constraintVertical_bias="0"
-        app:layout_constraintVertical_chainStyle="spread" />
+        app:layout_constraintVertical_chainStyle="spread"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/product_name"
@@ -41,13 +43,15 @@
         android:text="Product name"
         android:textSize="12sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@id/product_price"
         app:layout_constraintEnd_toEndOf="@id/product_image"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toEndOf="@+id/card"
         app:layout_constraintStart_toStartOf="@+id/card"
-        app:layout_constraintTop_toBottomOf="@+id/product_image" />
+        app:layout_constraintTop_toBottomOf="@+id/product_image"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/product_price"
@@ -62,6 +66,7 @@
         app:layout_constraintEnd_toEndOf="@id/card"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="@+id/product_name"
-        app:layout_constraintTop_toBottomOf="@+id/product_name" />
+        app:layout_constraintTop_toBottomOf="@+id/product_name"
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
